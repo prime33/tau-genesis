@@ -1,0 +1,117 @@
+{
+ "kept": [
+  "always u[t] = i_upd[t]",
+  "always i_sewage_contracted[t] = 0 || o_ask_accountability[t] != 0"
+ ],
+ "conditional": [
+  "always i_river_polluted[t] = 0 || o_priority_sewage[t] != 0",
+  "always o_endorse[t] = 0 || o_priority_sewage[t] != 0"
+ ],
+ "dropped": [],
+ "added": [
+  "always o_priority_sewage[t] = 0",
+  "always o_endorse[t] = 0",
+  "always i_river_polluted[t] = 0"
+ ],
+ "clauses": [
+  {
+   "clause": "always u[t] = i_upd[t]",
+   "emitter": null,
+   "status": "kept",
+   "via": "always u[t] = i_upd[t]",
+   "branch_condition": null,
+   "lives_only_if": null,
+   "branch": null
+  },
+  {
+   "clause": "always i_river_polluted[t] = 0 || o_priority_sewage[t] != 0",
+   "emitter": "agents.seed.local_resident",
+   "status": "conditional",
+   "via": "always i_river_polluted[t] = 0",
+   "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+   "lives_only_if": "always i_river_polluted[t] = 0",
+   "branch": {
+    "disjunction": 0,
+    "disjunct": 0,
+    "of": 2
+   }
+  },
+  {
+   "clause": "always o_endorse[t] = 0 || o_priority_sewage[t] != 0",
+   "emitter": "agents.seed.example_admin",
+   "status": "conditional",
+   "via": "always o_endorse[t] = 0",
+   "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+   "lives_only_if": "always i_river_polluted[t] = 0",
+   "branch": {
+    "disjunction": 0,
+    "disjunct": 0,
+    "of": 2
+   }
+  },
+  {
+   "clause": "always i_sewage_contracted[t] = 0 || o_ask_accountability[t] != 0",
+   "emitter": "agents.seed.civil_engineer",
+   "status": "kept",
+   "via": "always i_sewage_contracted[t] = 0 || o_ask_accountability[t] != 0",
+   "branch_condition": null,
+   "lives_only_if": null,
+   "branch": null
+  }
+ ],
+ "added_detail": [
+  {
+   "clause": "always o_priority_sewage[t] = 0",
+   "status": "added",
+   "via": "every branch of disjunction",
+   "branch_condition": null
+  },
+  {
+   "clause": "always o_endorse[t] = 0",
+   "status": "added_conditional",
+   "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+   "lives_only_if": "always i_river_polluted[t] = 0",
+   "branch": {
+    "disjunct": 0,
+    "of": 2
+   }
+  },
+  {
+   "clause": "always i_river_polluted[t] = 0",
+   "status": "added_conditional",
+   "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+   "lives_only_if": "always i_river_polluted[t] = 0",
+   "branch": {
+    "disjunct": 0,
+    "of": 2
+   }
+  }
+ ],
+ "disjunctions": [
+  {
+   "index": 0,
+   "branches": [
+    "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+    "always o_priority_sewage[t] = 0"
+   ]
+  }
+ ],
+ "inputs_inferred": false,
+ "normalised_by_oracle": false,
+ "minority_report_lines": [
+  {
+   "clause": "always i_river_polluted[t] = 0 || o_priority_sewage[t] != 0",
+   "status": "conditional",
+   "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+   "lives_only_if": "always i_river_polluted[t] = 0",
+   "emitter": "agents.seed.local_resident"
+  },
+  {
+   "clause": "always o_endorse[t] = 0 || o_priority_sewage[t] != 0",
+   "status": "conditional",
+   "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+   "lives_only_if": "always i_river_polluted[t] = 0",
+   "emitter": "agents.seed.example_admin"
+  }
+ ]
+}

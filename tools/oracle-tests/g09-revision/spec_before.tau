@@ -1,0 +1,2 @@
+# initial_spec from result.json (interpreter output, verbatim)
+always u[t]:tau = i_upd[t]:tau && (o_priority_sewage[t]:tau != 0 || i_river_polluted[t]:tau = 0) && (o_priority_sewage[t]:tau != 0 || o_endorse[t]:tau = 0) && (o_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0)

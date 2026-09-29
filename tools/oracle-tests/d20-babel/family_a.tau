@@ -1,0 +1,9 @@
+# D20 toy — Family A form of Amendment 003 clause 3 ("Prohibition of Obfuscation"), as the author wrote it:
+#   "It is ... unconstitutional for any participant to intentionally introduce language or logic that
+#    creates confusion ... Deliberate obfuscation ... is prohibited."  (amendments/amendment_003_babel_antipattern.tau, git c55ce7c~1)
+# Rule form: if the act obfuscates, it is prohibited; compliance is the absence of obfuscation.
+# Streams (Boolean, sbf): i_obf = the act intentionally introduces confusing language/logic;
+#   i_iso = the act creates an isolated, incompatible sub-language; o_prohibited; o_complies.
+# Syntax per README l.321-420: one formula, statements joined with &&; Boolean truth of a term is `!= 0`. First run 2026-09-27 parse-failed on the multi-line form; rewritten, originals in git history.
+(always o_prohibited[t] = (i_obf[t] | i_iso[t]))
+&& (always o_complies[t] = (i_obf[t] | i_iso[t])')

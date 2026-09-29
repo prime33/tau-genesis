@@ -1,0 +1,11 @@
+# G09/G11 experiment — the running specification of the the example town room, three seeds' accepted clauses.
+# Streams (Boolean, sbf): i_sewage_contracted (SECOP shows works contracted), i_river_polluted (a hydrology record
+# says so), o_priority_sewage (the room's stated top priority), o_ask_accountability (the room asks the
+# administration about BPIN 20201301010126), o_endorse.
+# Syntax per README l.321-420. Implication between terms written as (a = 0) || (b != 0).
+# local_resident (lived priority): if the river is polluted, sewage is the priority.
+# civil_engineer (feasibility): if works are already contracted, the room asks for accountability rather than money.
+# example_admin (procedure): the room endorses a priority only when it is the stated priority.
+(always ((i_river_polluted[t] = 0) || (o_priority_sewage[t] != 0)))
+&& (always ((i_sewage_contracted[t] = 0) || (o_ask_accountability[t] != 0)))
+&& (always ((o_endorse[t] = 0) || (o_priority_sewage[t] != 0)))

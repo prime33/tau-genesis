@@ -1,0 +1,8 @@
+# D20 toy — v3 transcompiler form of the same clause (streams/amendments/babel_antipattern_principle.tml):
+#   prohibition_of_obfuscation(X) :- introduces_semantic_confusion(X), prohibits_semantic_isolation(X).
+# The head is TRUE exactly when the antecedent phrases hold: the predicate named for the norm is
+# satisfied by the act it was meant to forbid. Encoded faithfully: o_poo (the head) = conjunction of the body.
+# Same streams as family_a.tau; o_complies is the head, because v3 has no other notion of compliance.
+# Syntax per README l.321-420: one formula, statements joined with &&; Boolean truth of a term is `!= 0`. Rewritten after the parse failure.
+(always o_poo[t] = (i_obf[t] & i_iso[t]))
+&& (always o_complies[t] = o_poo[t])

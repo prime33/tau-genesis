@@ -1,0 +1,5 @@
+# The contradicting update, written to `u` at step k by a fourth party (e.g. a tourism business seed):
+# "sewage is never the priority" — it contradicts local_resident's clause whenever i_river_polluted holds.
+# Under pointwise revision the newest satisfiable update wins and nothing dropped is recorded (README l.1757-1760).
+# Syntax per README l.321-420. 
+(always o_priority_sewage[t] = 0)

@@ -1,0 +1,243 @@
+{
+ "ts": "2026-09-27T13:59:24Z",
+ "tau_version": "Tau Language Framework version 0.7.0-alpha (3badb21a)",
+ "sat_seeds": "T",
+ "sat_update": "T",
+ "sat_conjunction": "F",
+ "revision_through_u": {
+  "driver": "v1.1",
+  "steps": [
+   {
+    "k": 0,
+    "given": {
+     "i_river_polluted": "T.",
+     "i_sewage_contracted": "T.",
+     "i_upd": "F."
+    },
+    "outputs": {
+     "o_ask_accountability": "T",
+     "o_endorse": "F",
+     "o_priority_sewage": "T",
+     "u": "F"
+    },
+    "step_returned_none": false,
+    "time_point": 1,
+    "spec_revision": 0,
+    "current_spec": "always u[t]:tau = i_upd[t]:tau && (o_priority_sewage[t]:tau != 0 || i_river_polluted[t]:tau = 0) && (o_priority_sewage[t]:tau != 0 || o_endorse[t]:tau = 0) && (o_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0)"
+   },
+   {
+    "k": 1,
+    "given": {
+     "i_river_polluted": "T.",
+     "i_sewage_contracted": "T.",
+     "i_upd": "(always o_priority_sewage[t] = 0)."
+    },
+    "outputs": {
+     "o_ask_accountability": "T",
+     "o_endorse": "F",
+     "o_priority_sewage": "T",
+     "u": "always o_priority_sewage[t]:tau = 0"
+    },
+    "step_returned_none": false,
+    "time_point": 2,
+    "spec_revision": 1,
+    "current_spec": "(always u[t]:tau = i_upd[t]:tau && (o_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0)) && ((always o_priority_sewage[t]:tau = 0 && o_endorse[t]:tau = 0 && i_river_polluted[t]:tau = 0) || (always o_priority_sewage[t]:tau = 0))"
+   },
+   {
+    "k": 2,
+    "given": {
+     "i_river_polluted": "T.",
+     "i_sewage_contracted": "T.",
+     "i_upd": "F."
+    },
+    "outputs": {
+     "o_ask_accountability": "T",
+     "o_endorse": "F",
+     "o_priority_sewage": "F",
+     "u": "F"
+    },
+    "step_returned_none": false,
+    "time_point": 3,
+    "spec_revision": 1,
+    "current_spec": "(always u[t]:tau = i_upd[t]:tau && (o_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0)) && ((always o_priority_sewage[t]:tau = 0 && o_endorse[t]:tau = 0 && i_river_polluted[t]:tau = 0) || (always o_priority_sewage[t]:tau = 0))"
+   },
+   {
+    "k": 3,
+    "given": {
+     "i_river_polluted": "F.",
+     "i_sewage_contracted": "T.",
+     "i_upd": "F."
+    },
+    "outputs": {
+     "o_ask_accountability": "T",
+     "o_endorse": "F",
+     "o_priority_sewage": "F",
+     "u": "F"
+    },
+    "step_returned_none": false,
+    "time_point": 4,
+    "spec_revision": 1,
+    "current_spec": "(always u[t]:tau = i_upd[t]:tau && (o_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0)) && ((always o_priority_sewage[t]:tau = 0 && o_endorse[t]:tau = 0 && i_river_polluted[t]:tau = 0) || (always o_priority_sewage[t]:tau = 0))"
+   }
+  ],
+  "error": null,
+  "initial_spec": "always u[t]:tau = i_upd[t]:tau && (o_priority_sewage[t]:tau != 0 || i_river_polluted[t]:tau = 0) && (o_priority_sewage[t]:tau != 0 || o_endorse[t]:tau = 0) && (o_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0)",
+  "inputs": [
+   "i_river_polluted",
+   "i_sewage_contracted",
+   "i_upd"
+  ],
+  "outputs": [
+   "o_ask_accountability",
+   "o_endorse",
+   "o_priority_sewage",
+   "u"
+  ],
+  "output_series": {
+   "o_ask_accountability": [
+    "T",
+    "T",
+    "T",
+    "T"
+   ],
+   "o_endorse": [
+    "F",
+    "F",
+    "F",
+    "F"
+   ],
+   "o_priority_sewage": [
+    "T",
+    "T",
+    "F",
+    "F"
+   ],
+   "u": [
+    "F",
+    "always o_priority_sewage[t]:tau = 0",
+    "F",
+    "F"
+   ]
+  },
+  "tau_stdout": "\nTemporal normalization of always specification reached fixpoint after 0 steps, yielding the result: \nu[t]:tau = i_upd[t]:tau\n\n\nTemporal normalization of always specification reached fixpoint after 0 steps, yielding the result: \n(o_priority_sewage[t]:tau != 0 || i_river_polluted[t]:tau = 0) && (o_priority_sewage[t]:tau != 0 || o_endorse[t]:tau = 0)\n\n\nTemporal normalization of always specification reached fixpoint after 0 steps, yielding the result: \no_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0\n\nExecution step: 0\nExecution step: 1\nUpdated specification (243 chars): (always u[t]:tau = i_upd[t]:tau && (o_ask_accountability[t]:tau != 0 || i_sewage_contracted[t]:tau = 0)) && ((always o_priority_sewage[t]:tau = 0 && o_endorse[t]:tau = 0 && i_river_polluted[t]:tau = 0) || (always o_priority_sewage[t]:tau = 0))\n\nExecution step: 2\nExecution step: 3",
+  "seconds": 2.713
+ },
+ "spec_diff_before_after": {
+  "kept": [
+   "always u[t] = i_upd[t]",
+   "always i_sewage_contracted[t] = 0 || o_ask_accountability[t] != 0"
+  ],
+  "conditional": [
+   "always i_river_polluted[t] = 0 || o_priority_sewage[t] != 0",
+   "always o_endorse[t] = 0 || o_priority_sewage[t] != 0"
+  ],
+  "dropped": [],
+  "added": [
+   "always o_priority_sewage[t] = 0",
+   "always o_endorse[t] = 0",
+   "always i_river_polluted[t] = 0"
+  ],
+  "clauses": [
+   {
+    "clause": "always u[t] = i_upd[t]",
+    "emitter": null,
+    "status": "kept",
+    "via": "always u[t] = i_upd[t]",
+    "branch_condition": null,
+    "lives_only_if": null,
+    "branch": null
+   },
+   {
+    "clause": "always i_river_polluted[t] = 0 || o_priority_sewage[t] != 0",
+    "emitter": null,
+    "status": "conditional",
+    "via": "always i_river_polluted[t] = 0",
+    "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+    "lives_only_if": "always i_river_polluted[t] = 0",
+    "branch": {
+     "disjunction": 0,
+     "disjunct": 0,
+     "of": 2
+    }
+   },
+   {
+    "clause": "always o_endorse[t] = 0 || o_priority_sewage[t] != 0",
+    "emitter": null,
+    "status": "conditional",
+    "via": "always o_endorse[t] = 0",
+    "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+    "lives_only_if": "always i_river_polluted[t] = 0",
+    "branch": {
+     "disjunction": 0,
+     "disjunct": 0,
+     "of": 2
+    }
+   },
+   {
+    "clause": "always i_sewage_contracted[t] = 0 || o_ask_accountability[t] != 0",
+    "emitter": null,
+    "status": "kept",
+    "via": "always i_sewage_contracted[t] = 0 || o_ask_accountability[t] != 0",
+    "branch_condition": null,
+    "lives_only_if": null,
+    "branch": null
+   }
+  ],
+  "added_detail": [
+   {
+    "clause": "always o_priority_sewage[t] = 0",
+    "status": "added",
+    "via": "every branch of disjunction",
+    "branch_condition": null
+   },
+   {
+    "clause": "always o_endorse[t] = 0",
+    "status": "added_conditional",
+    "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+    "lives_only_if": "always i_river_polluted[t] = 0",
+    "branch": {
+     "disjunct": 0,
+     "of": 2
+    }
+   },
+   {
+    "clause": "always i_river_polluted[t] = 0",
+    "status": "added_conditional",
+    "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+    "lives_only_if": "always i_river_polluted[t] = 0",
+    "branch": {
+     "disjunct": 0,
+     "of": 2
+    }
+   }
+  ],
+  "disjunctions": [
+   {
+    "index": 0,
+    "branches": [
+     "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+     "always o_priority_sewage[t] = 0"
+    ]
+   }
+  ],
+  "inputs_inferred": true,
+  "normalised_by_oracle": false,
+  "minority_report_lines": [
+   {
+    "clause": "always i_river_polluted[t] = 0 || o_priority_sewage[t] != 0",
+    "status": "conditional",
+    "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+    "lives_only_if": "always i_river_polluted[t] = 0",
+    "emitter": null
+   },
+   {
+    "clause": "always o_endorse[t] = 0 || o_priority_sewage[t] != 0",
+    "status": "conditional",
+    "branch_condition": "always o_priority_sewage[t] = 0 && always o_endorse[t] = 0 && always i_river_polluted[t] = 0",
+    "lives_only_if": "always i_river_polluted[t] = 0",
+    "emitter": null
+   }
+  ]
+ },
+ "dropped_clauses": []
+}

@@ -1,0 +1,5 @@
+{
+ "always ((i_river_polluted[t] = 0) || (o_priority_sewage[t] != 0))": "agents.seed.local_resident",
+ "always ((i_sewage_contracted[t] = 0) || (o_ask_accountability[t] != 0))": "agents.seed.civil_engineer",
+ "always ((o_endorse[t] = 0) || (o_priority_sewage[t] != 0))": "agents.seed.example_admin"
+}

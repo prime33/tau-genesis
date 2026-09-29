@@ -1,0 +1,20 @@
+{
+ "ts": "2026-09-27T13:21:34Z",
+ "tau_version": "Tau Language Framework version 0.7.0-alpha (3badb21a)",
+ "query": "&& (sometimes (i_obf[t] & i_iso[t] & o_complies[t]) != 0)",
+ "results": {
+  "family_a.tau": {
+   "spec_sha256": "29f192e50b9dbedcc7b64f6ab78ee1f70bcea08033ef589407016ddb3fb616c5",
+   "parse": true,
+   "parse_error": null,
+   "sat_with_violation": "F"
+  },
+  "v3.tau": {
+   "spec_sha256": "f2d734a58a532da0e8e2683ded7abbb3a01ecb7577c7d807e810fbd23c0353a9",
+   "parse": true,
+   "parse_error": null,
+   "sat_with_violation": "T"
+  }
+ },
+ "matches_D20_expectation": true
+}
