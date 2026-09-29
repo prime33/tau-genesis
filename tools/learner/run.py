@@ -43,7 +43,7 @@ FRAGMENT_SETS = {
               "stream_endorsement", "endorsement_from_town_admin", "endorsement_from_engineer", "endorsement_from_resident"],
     # step 4 = the ILLUSTRATIVE civic example (streams/*/example); its hidden tests are not written yet (CLEAN-PUBLIC-PLAN §4)
 }
-FRAGMENT_SETS["steps2-4"] = FRAGMENT_SETS["step2"] + FRAGMENT_SETS["step3"] + FRAGMENT_SETS["step4"]
+FRAGMENT_SETS["steps2-4"] = FRAGMENT_SETS["step2"] + FRAGMENT_SETS["step3"] + FRAGMENT_SETS["step4"]  # step4 = the illustrative example here
 JSON_SHAPE = ('Answer with ONE JSON object and nothing else: {"spec": "<Tau specification, one formula, statements joined with &&>", '
               '"streams": {"inputs": ["i_x", ...], "outputs": ["o_y", ...]}, "test": {"steps": [{"i_x": "T"|"F"|"<value>", ...}, ...3-5 steps], '
               '"expected": {"o_y": ["T"|"F"|..., one per step], ...}}, "claims": ["<one falsifiable sentence>", ...], "unmapped": ["<term>", ...]}. '
@@ -145,7 +145,7 @@ def main():
     ap.add_argument("--fragments", default="valid_thought"); ap.add_argument("--max-attempts", type=int, default=5)
     ap.add_argument("--daily-cap", type=float, default=15.0); ap.add_argument("--model", default="anthropic-claude-opus-5")
     ap.add_argument("--k", type=int, default=5)
-    ap.add_argument("--ablate", choices=["bare"], help="learner-v1.md §4 baseline: no retrieval, no idioms; one attempt; rows tagged condition=bare; never writes out/")
+    ap.add_argument("--ablate", choices=["bare", "noretrieval"], help="learner-v1.md §4 baseline: no retrieval, no idioms; one attempt; rows tagged condition=bare; never writes out/")
     ap.add_argument("--tests", help="external pre-registered tests file name under tools/learner/tests/ (e.g. valid_thought); interface goes to the model, steps/expected stay hidden")
     a = ap.parse_args()
     tests = {}

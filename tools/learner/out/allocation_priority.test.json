@@ -1,0 +1,1 @@
+{"steps": [{"i_funds_available": "T", "i_treatment_first": "T"}, {"i_funds_available": "T", "i_treatment_first": "F"}, {"i_funds_available": "F", "i_treatment_first": "F"}, {"i_funds_available": "F", "i_treatment_first": "T"}], "expected": {"o_allocation_priority": ["T", "F", "T", "T"]}}

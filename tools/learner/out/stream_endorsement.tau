@@ -1,0 +1,3 @@
+# stream_endorsement — verified by the oracle (attempt 151, 2026-09-29T22:45:36Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/civic/example/endorsement_from_resident.tau
+i_admin_affirms : tau := in console. i_engineer_affirms : tau := in console. i_resident_affirms : tau := in console. i_target_is_river_town_priority : tau := in console. o_endorsed_by_admin : tau := out console. o_endorsed_by_engineer : tau := out console. o_endorsed_by_resident : tau := out console. always (o_endorsed_by_admin[t] = i_admin_affirms[t] & i_target_is_river_town_priority[t] && o_endorsed_by_engineer[t] = i_engineer_affirms[t] & i_target_is_river_town_priority[t] && o_endorsed_by_resident[t] = i_resident_affirms[t] & i_target_is_river_town_priority[t]).

@@ -1,0 +1,3 @@
+# river_town_priority — verified by the oracle (attempt 150, 2026-09-29T22:45:01Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/policy/example/river_town_priority.tau
+i_treatment_neglected : tau := in console. o_water_protection_collapses : tau := out console. o_health_priority_collapses : tau := out console. o_allocation_justified : tau := out console. always (o_water_protection_collapses[t] = i_treatment_neglected[t] && o_health_priority_collapses[t] = i_treatment_neglected[t] && o_allocation_justified[t] = o_water_protection_collapses[t] & o_health_priority_collapses[t])

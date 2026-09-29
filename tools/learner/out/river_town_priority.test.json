@@ -1,0 +1,1 @@
+{"steps": [{"i_treatment_neglected": "F"}, {"i_treatment_neglected": "T"}, {"i_treatment_neglected": "T"}, {"i_treatment_neglected": "F"}], "expected": {"o_water_protection_collapses": ["F", "T", "T", "F"], "o_health_priority_collapses": ["F", "T", "T", "F"], "o_allocation_justified": ["F", "T", "T", "F"]}}

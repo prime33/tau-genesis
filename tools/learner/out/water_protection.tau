@@ -1,0 +1,3 @@
+# water_protection — verified by the oracle (attempt 147, 2026-09-29T22:43:34Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/policy/example/river_town_priority.tau
+i_untreated_waste : tau := in console. i_reaches_river : tau := in console. o_water_protection : tau := out console. always o_water_protection[t] = (i_untreated_waste[t] & i_reaches_river[t])'.

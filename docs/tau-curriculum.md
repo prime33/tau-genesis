@@ -72,6 +72,10 @@ Eleven fragments: the six defined `sewage_priority` concepts, its clause_007 cha
 
 **Correction to the first measurement (recorded).** With the `reduced` rule tightened on 2026-09-29 (series equality alone is not identity; the spec must read exactly one input), the flag was recomputed on all 57 verified rows: 20 changed, and of the eleven step 1 external passes only `statement` remains `reduced` (by design). The first-measurement text above said all were flagged; that flag was the coincidence bug, not a property of the specs. Across four steps, 47 of 48 fragments verified-external; 3 verified rows are `reduced`, all by design (`statement`, `sewage_priority`, and one baseline row).
 
+## Learner status, fourth measurement bis (2026-09-29, the illustrative civic example)
+
+After the community instance's text moved to its private ops (D31), the public tree's own step 4 is the synthetic example under `streams/*/example/`: nine fragments, hidden tests in `tools/learner/tests/step4.json` (reference-checked 9/9 before the run), concepts parsed straight from the stream files. **9 / 9 verified-external, all on the first attempt; 9 attempts, $0.21.** `river_town_priority` (the clause_005 chain) is `reduced` by design; `stream_endorsement` came back as the one-predicate form with three record outputs and no count (D21). The verified specs are in `tools/learner/out/`, so this tree now carries verified specifications of what it contains.
+
 ## Ablation: is v1 a learner or a prompt? (2026-09-29, learner-v1.md §4)
 
 Same 36 fragments of steps 2-4, same hidden tests, one attempt each, with the retrieval sections (nearest chunks, corpus items by tag) and the oracle-verified idioms block removed from the prompt; grammar, LANGUEDOC rows, mapping rows and the fragment text kept. Rows carry `condition = bare` in `attempts.db` and never became verified outputs. Spend $1.00.

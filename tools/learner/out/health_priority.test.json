@@ -1,0 +1,1 @@
+{"steps": [{"i_disease_present": "F", "i_waste_related": "F"}, {"i_disease_present": "T", "i_waste_related": "F"}, {"i_disease_present": "T", "i_waste_related": "T"}, {"i_disease_present": "F", "i_waste_related": "T"}], "expected": {"o_health_priority": ["T", "T", "F", "T"]}}

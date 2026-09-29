@@ -1,0 +1,1 @@
+{"steps": [{"i_untreated_waste": "F", "i_reaches_river": "F"}, {"i_untreated_waste": "T", "i_reaches_river": "F"}, {"i_untreated_waste": "F", "i_reaches_river": "T"}, {"i_untreated_waste": "T", "i_reaches_river": "T"}], "expected": {"o_water_protection": ["T", "T", "T", "F"]}}

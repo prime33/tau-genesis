@@ -1,0 +1,3 @@
+# endorsement_from_engineer — verified by the oracle (attempt 153, 2026-09-29T22:46:39Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/civic/example/endorsement_from_engineer.tau
+i_engineer_affirms : tau := in console. i_target_is_river_town_priority : tau := in console. i_rationale_recorded : tau := in console. o_endorsement_from_engineer : tau := out console. always o_endorsement_from_engineer[t] = i_engineer_affirms[t] & i_target_is_river_town_priority[t] & i_rationale_recorded[t]

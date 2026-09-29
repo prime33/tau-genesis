@@ -142,7 +142,8 @@ def family_a_text(entry):
 
 
 def build(name, c, k, ablate=None):
-    """ablate="bare": no retrieval sections and no idioms block (learner-v1.md §4 baseline: grammar + decisions + fragment only)."""
+    """ablate="bare": no retrieval sections and no idioms block (learner-v1.md §4 baseline: grammar + decisions + fragment only).
+    ablate="noretrieval": idioms kept, retrieval sections removed (the split condition)."""
     entry = c[name]
     fa = family_a_text(entry)
     definition = entry["definition"]
@@ -167,18 +168,18 @@ def build(name, c, k, ablate=None):
         "inputs and the exact expected outputs; list every term of the clause you could not place under `unmapped` instead "
         "of inventing a construct. Answer as JSON: {spec, streams, test:{steps:[{...}], expected:{...}}, claims:[...], unmapped:[...]}.\n\n"
         "## Tau grammar (README, transcribed)\n" + grammar +
-        ("" if ablate == "bare" else "\n\n## Idioms verified by the oracle at pin 3badb21 (2026-09-29)\n" + IDIOMS) +
+        ("" if ablate == "bare" else "\n\n## Idioms verified by the oracle at pin 3badb21 (2026-09-29)\n" + IDIOMS) +  # noretrieval keeps the idioms
         "\n\n## Vocabulary decisions in force (LANGUEDOC)\n" + "\n".join(ld or ["(none for these terms)"])
     )
     user = (
         f"## Fragment: `{name}` — defined in {', '.join(entry['defined_in'])}\n{definition}\n\n"
         "## Mapping (Phase 2)\n" + ("\n".join(rows) or "(no row)") + "\n\n" +
-        ("" if ablate == "bare" else
+        ("" if ablate in ("bare", "noretrieval") else
          "## Nearest verified Tau material\n" + "\n\n".join(f"[{h['chunk']} {h['type']} {h['title']} sim={h['sim']:.2f}]\n{h['text'][:1500]}" for h in chunks) +
          "\n\n## Corpus items by capability " + ",".join(tags) + "\n" + "\n".join(f"- {it['id']} ({it['source']}): {it['text'][:300]}" for it in items) + "\n\n") +
         "Produce the specification, its streams, the test, the claims, and `unmapped`."
     )
-    return system, user, {"tags": tags, "chunks": [] if ablate == "bare" else [h["chunk"] for h in chunks], "items": [] if ablate == "bare" else [it["id"] for it in items],
+    return system, user, {"tags": tags, "chunks": [] if ablate else [h["chunk"] for h in chunks], "items": [] if ablate else [it["id"] for it in items],
                           "languedoc_rows": len(ld), "mapping_rows": len(rows), "ablate": ablate}
 
 
