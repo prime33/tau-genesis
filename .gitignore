@@ -1,0 +1,16 @@
+*.zip
+*.log
+__pycache__/
+.DS_Store
+
+# secrets (companion brief §9)
+.env
+.env.*
+
+corpus/tau/repos/
+# any single corpus file > 20 MB (listed by corpus/README.md "Large files" section)
+
+corpus/tau/video/
+
+# tools/access.py state (gated-surface verdicts, operator queue)
+tools/.access/
