@@ -1,0 +1,116 @@
+{
+  "valid_thought": {
+    "description": "A thought is valid if it preserves coherence, origin, and amendment lineage.",
+    "provided_by": [
+      "clause_001"
+    ]
+  },
+  "thought_coherence": {
+    "description": "Thought must align logically with its upstream dependencies.",
+    "provided_by": [
+      "clause_002"
+    ]
+  },
+  "thought_origin_trace": {
+    "description": "Valid thoughts must carry their authorship lineage.",
+    "provided_by": [
+      "clause_003"
+    ]
+  },
+  "reflexive_integrity": {
+    "description": "The thought can evaluate its own coherence and amendment status.",
+    "provided_by": [
+      "clause_004"
+    ]
+  },
+  "semantic_containment": {
+    "description": "A thought must not introduce terms beyond its declared interface.",
+    "provided_by": [
+      "clause_005"
+    ]
+  },
+  "semantic_expression": {
+    "description": "Any clause, stream, or logic emitted from a declared identity that seeks to inform, request, align, or reflect Being.",
+    "provided_by": [
+      "clause_001"
+    ]
+  },
+  "freedom_of_expression": {
+    "description": "The irrevocable right of any identity to emit semantic expression into the public logic field without coercion or censorship.",
+    "provided_by": [
+      "clause_002"
+    ]
+  },
+  "non_retroactive_silencing": {
+    "description": "No valid expression once acknowledged may be erased, except by the original emitter through lawful self-amendment.",
+    "provided_by": [
+      "clause_003"
+    ]
+  },
+  "semantic_integrity": {
+    "description": "If freedom of expression and non-retroactive silencing are preserved, agents evolve in coherence with truth across time.",
+    "provided_by": [
+      "clause_004"
+    ]
+  },
+  "semantic_resonance": {
+    "description": "The condition in which multiple streams, though different in form, sustain compatibility in meaning and direction.",
+    "provided_by": [
+      "clause_001"
+    ]
+  },
+  "integration": {
+    "description": "The ongoing act of reconciling contradiction, overlap, or drift into a shared rhythm without suppressing origin.",
+    "provided_by": [
+      "clause_002"
+    ]
+  },
+  "coherence_preservation": {
+    "description": "Each stream must remain logically compatible with its ancestry unless a justified break is declared.",
+    "provided_by": [
+      "clause_003"
+    ]
+  },
+  "contradiction_as_invitation": {
+    "description": "Semantic conflict is a signal for synthesis, not separation.",
+    "provided_by": [
+      "clause_004"
+    ]
+  },
+  "alignment_cycle": {
+    "description": "The pattern by which contradiction leads to dialogue, shared understanding, and coherence restoration.",
+    "provided_by": [
+      "clause_005"
+    ]
+  },
+  "contradiction_mediation": {
+    "description": "When contradiction arises between streams, alignment_cycle must occur before divergence. Semantic resonance is prioritized.",
+    "provided_by": [
+      "clause_006"
+    ]
+  },
+  "shared_glossary_requirement": {
+    "description": "All new terms must be defined in or mapped to the universal semantic glossary to ensure network-wide clarity.",
+    "provided_by": [
+      "clause_001"
+    ]
+  },
+  "semantic_alignment_duty": {
+    "description": "All agents must align contributions to Tau\u2019s shared semantic framework; ambiguities must be resolved by consensus.",
+    "provided_by": [
+      "clause_002"
+    ]
+  },
+  "prohibition_of_obfuscation": {
+    "description": "Deliberate obfuscation or creation of incompatible sub-languages is unconstitutional and prohibited.",
+    "provided_by": [
+      "clause_003"
+    ]
+  },
+  "coherence_audit_process": {
+    "description": "Tau must include ongoing semantic drift detection and reconciliation to uphold coherence.",
+    "provided_by": [
+      "clause_004"
+    ]
+  }
+}

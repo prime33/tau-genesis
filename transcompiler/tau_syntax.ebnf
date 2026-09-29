@@ -1,0 +1,24 @@
+(* Tau Syntax Grammar (EBNF) *)
+
+stream       ::= "stream:" identifier
+clause_block ::= "clause_" number version? ":" clause_body
+clause_body  ::= "define" string "as:" logic_expr
+logic_expr   ::= implication
+implication  ::= disjunction ["implies" disjunction]
+disjunction  ::= conjunction {"or" conjunction}
+conjunction  ::= literal {"and" literal}
+literal      ::= identifier | "not" identifier | "(" logic_expr ")"
+
+version      ::= "v" digit "." digit "." digit
+identifier   ::= ? letter followed by letters/numbers/underscores ?
+string       ::= '"' ? printable characters ? '"'
+number       ::= digit {digit}
+
+interface    ::= "interface:" interface_body
+interface_body ::= "provides:" list "requires:" list
+list         ::= "[" [identifier {"," identifier}] "]"
+
+meta_block   ::= "meta:" meta_fields
+meta_fields  ::= {identifier ":" value}
+value        ::= string | number | list
+
