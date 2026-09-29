@@ -1,0 +1,17 @@
+# streams/civic/example/endorsement_from_resident.tau — ILLUSTRATIVE (synthetic role, no real person)
+stream: streams.civic.example.endorsement_from_resident
+
+declare concept "stream_endorsement".
+declare concept "endorsement_rationale".
+
+clause_001 v0.1.0:
+  define "stream_endorsement" as:
+    a public affirmation emitted by resident in support of streams.policy.example.river_town_priority.
+
+clause_002 v0.1.0:
+  define "endorsement_rationale" as:
+    endorses the stream as a necessity from the community's perspective.
+
+interface:
+  provides: [stream_endorsement, endorsement_rationale]
+  requires: [identity_trace, treatment_requirement]

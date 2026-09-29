@@ -1,0 +1,34 @@
+# streams/policy/example/river_town_priority.tau — ILLUSTRATIVE
+# A synthetic civic policy stream in the 2025 proposal's form. The town, the river and the roles are invented;
+# no amount, no token, no real place. The 2025 example it replaces belongs to a community instance (D31).
+stream: streams.policy.example.river_town_priority
+
+declare concept "treatment_requirement".
+declare concept "water_protection".
+declare concept "health_priority".
+declare concept "allocation_priority".
+
+clause_001 v0.1.0:
+  define "treatment_requirement" as:
+    the requirement that effluents be treated before they enter the town's river.
+
+clause_002 v0.1.0:
+  define "water_protection" as:
+    the act of preserving the river from contamination by untreated waste.
+
+clause_003 v0.1.0:
+  define "health_priority" as:
+    the declared right of inhabitants to live free from waste-related disease.
+
+clause_004 v0.1.0:
+  define "allocation_priority" as:
+    the assertion that available funds be directed first to treatment works.
+
+clause_005 v0.1.0:
+  if ( treatment_requirement is neglected )
+  then ( water_protection and health_priority collapse )
+  therefore ( allocation_priority is justified. )
+
+interface:
+  provides: [treatment_requirement, water_protection, health_priority, allocation_priority]
+  requires: [identity]

@@ -1,0 +1,17 @@
+# streams/civic/example/endorsement_from_engineer.tau — ILLUSTRATIVE (synthetic role, no real person)
+stream: streams.civic.example.endorsement_from_engineer
+
+declare concept "stream_endorsement".
+declare concept "endorsement_rationale".
+
+clause_001 v0.1.0:
+  define "stream_endorsement" as:
+    a public affirmation emitted by engineer in support of streams.policy.example.river_town_priority.
+
+clause_002 v0.1.0:
+  define "endorsement_rationale" as:
+    affirms the technical feasibility of the works.
+
+interface:
+  provides: [stream_endorsement, endorsement_rationale]
+  requires: [identity_trace, treatment_requirement]

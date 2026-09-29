@@ -1,0 +1,10 @@
+{
+  "_about": "ILLUSTRATIVE registry: no amount, no token field (D29)",
+  "civic_priority_stream": "streams.policy.example.river_town_priority",
+  "proposer": "agents/seed/example_resident.tau",
+  "validators": [
+    "agents/seed/example_admin.tau",
+    "agents/seed/example_engineer.tau"
+  ],
+  "queue_status": "example"
+}

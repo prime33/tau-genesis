@@ -1,0 +1,10 @@
+# agents/seed/example_admin.tau — ILLUSTRATIVE seed (a role in an invented town; not a person)
+stream: agents.seed.example_admin
+
+clause_001 v0.1.0:
+  define "identity" as:
+    example_admin — a declared administrative role of the river town, validating civic streams.
+
+interface:
+  provides: [identity, stream_validation]
+  requires: [genesis_stream]
