@@ -1,0 +1,3 @@
+# treatment_requirement — verified by the oracle (attempt 146, 2026-09-29T22:43:06Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/policy/example/river_town_priority.tau
+i_effluent_enters_river : tau := in console. i_treated_before_entry : tau := in console. o_treatment_requirement : tau := out console. always (o_treatment_requirement[t] = i_effluent_enters_river[t]' | i_treated_before_entry[t])

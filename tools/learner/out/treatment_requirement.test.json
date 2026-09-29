@@ -1,0 +1,1 @@
+{"steps": [{"i_effluent_enters_river": "T", "i_treated_before_entry": "T"}, {"i_effluent_enters_river": "T", "i_treated_before_entry": "F"}, {"i_effluent_enters_river": "F", "i_treated_before_entry": "F"}, {"i_effluent_enters_river": "F", "i_treated_before_entry": "T"}], "expected": {"o_treatment_requirement": ["T", "F", "T", "T"]}}
