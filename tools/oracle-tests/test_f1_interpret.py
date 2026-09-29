@@ -153,3 +153,13 @@ def test_tau_valued_output_compares_by_normal_form():
     assert o.tau_equal(got[0], "{ always o1[t] = i1[t] } : tau")
     assert o.tau_equal(got[1], "{ always o1[t] = i1[t]' } : tau")
     assert not o.tau_equal(got[0], got[1])
+
+
+@skip
+def test_tau_not_zero_is_not_truth():
+    """On tau-typed streams `!= 0` admits non-Boolean specification values under `sat`; `= 1` is the Boolean test
+    (measured 2026-09-29 on a violation query that came back T when the logic said F)."""
+    o = _o()
+    M = "i : tau := in console. o : tau := out console. "
+    assert o.sat(M + "(always o[t] = i[t]') && (sometimes (i[t] != 0 && o[t] != 0))") == "T"
+    assert o.sat(M + "(always o[t] = i[t]') && (sometimes (i[t] = 1 && o[t] = 1))") == "F"

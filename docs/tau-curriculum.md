@@ -107,6 +107,7 @@ A row is proved for the **corpus** when the oracle parsed the item and, where a 
 - `sat` on a bare term answers `F` instead of rejecting.
 - The README grammar makes `[index]` mandatory on function and predicate names; every example is index-free.
 - Two file-stream definitions on one line mis-parse (demo 4.1 lines 107 and 115); one per line works.
+- On `tau`-typed streams `x[t] != 0` is not "x is true": a `tau` value ranges over specifications, and `sat` admits non-Boolean values for it (`always o[t] = i[t]'` with `sometimes (i[t] != 0 && o[t] != 0)` is satisfiable; with `o[t] = 1` it is not). Write Boolean tests on `tau` streams as `= 1` / `= 0`; `!= 0` is truth on `sbf` only. Found 2026-09-29 on a violation query; execution with T/F inputs is unaffected, satisfiability reasoning is.
 
 ## Study order for the author
 
