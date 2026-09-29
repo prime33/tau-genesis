@@ -118,6 +118,26 @@ class Oracle:
         r = self._exec(["-q", "-X", "-s", "0", "-c", "0", "-b", "0", "-e", f"normalize {spec}"])
         return r.raw.strip()
 
+    def tau_form(self, value: str) -> str:
+        """Canonical printed form of a `tau` value: a `{ spec } : tau` constant, a bare formula, or the REPL's printed
+        output text (`always o1[t]:tau = i1[t]:tau`). Runs `normalize` and strips the `%n:` prefix and ANSI/whitespace,
+        so two formulas that normalise alike compare equal as strings (curriculum row 5: specifications as values)."""
+        import re as _re
+        v = value.strip()
+        m = _re.match(r"^\{(.*)\}\s*:\s*tau$", v, _re.S)
+        if m: v = m.group(1).strip()
+        raw = self.normalize(v)
+        raw = _re.sub(r"\x1b\[[0-9;]*m", "", raw)
+        lines = [l for l in raw.splitlines() if l.strip() and not l.lower().startswith(("tau>", "(error"))]
+        out = lines[-1] if lines else raw
+        out = _re.sub(r"^%\d+:\s*", "", out.strip())
+        return _re.sub(r"\s+", " ", out)
+
+    def tau_equal(self, a: str, b: str) -> bool:
+        """Equality of two `tau` values by normalised printed form (sound for equal forms; a semantic check via `sat` of
+        the symmetric difference is the stronger test and is not done here)."""
+        return self.tau_form(a) == self.tau_form(b)
+
     def run(self, spec: str, inputs: dict[str, list[str]], steps: int) -> dict:
         """Execute `spec` for `steps` steps with file-backed input streams.
 

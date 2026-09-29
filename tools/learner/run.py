@@ -103,11 +103,21 @@ def parse_answer(text: str) -> dict | None:
         return None
 
 
-def series_match(got, expected) -> bool:
-    """Compare on the oracle's normalised Boolean forms: sbf prints 0/1, tau prints T/F, the model may write either."""
-    if got is None:
+def series_match(got, expected, o=None) -> bool:
+    """Compare on the oracle's normalised Boolean forms: sbf prints 0/1, tau prints T/F, the model may write either.
+    A value that is not Boolean (a `tau` constant, curriculum row 5) is compared by normalised printed form through the
+    oracle when one is given, else as text."""
+    if got is None or len(got) != len(expected):
         return False
-    return [OracleV1.norm_bool(x) for x in got] == [OracleV1.norm_bool(x) for x in expected]
+    for g, e in zip(got, expected):
+        gn, en = OracleV1.norm_bool(g), OracleV1.norm_bool(e)
+        if gn in ("T", "F") and en in ("T", "F"):
+            if gn != en: return False
+        elif o is not None:
+            if not o.tau_equal(str(g), str(e)): return False
+        elif str(g).strip() != str(e).strip():
+            return False
+    return True
 
 
 def verify(o: OracleV1, ans: dict) -> dict:
@@ -131,7 +141,7 @@ def verify(o: OracleV1, ans: dict) -> dict:
     res = o.interpret_auto(spec, steps)   # binding for bare specs, REPL for declared/annotated streams or after a binding crash
     r["run_raw"] = json.dumps({k: v for k, v in res.items() if k != "tau_stdout"})[:6000]
     got = res.get("output_series") or {}
-    ok = res.get("error") is None and all(series_match(got.get(k), v) for k, v in expected.items())
+    ok = res.get("error") is None and all(series_match(got.get(k), v, o) for k, v in expected.items())
     r["run_ok"] = int(ok)
     if ok:
         r["verdict"], r["diagnosis"] = "verified", None
@@ -225,7 +235,7 @@ def main():
                             v["interface"] = json.dumps(ext["interface"])
                             res = o.interpret_auto(v["spec"], ext["steps"])
                             got = res.get("output_series") or {}
-                            okx = res.get("error") is None and all(series_match(got.get(k), v_) for k, v_ in ext["expected"].items())
+                            okx = res.get("error") is None and all(series_match(got.get(k), v_, o) for k, v_ in ext["expected"].items())
                             v["ext_ok"] = int(okx); v["ext_raw"] = json.dumps({"got": got, "expected": ext["expected"], "error": res.get("error")})[:4000]
                             v["verdict"] = "verified-external" if okx else "failed"
                             if not okx: v["diagnosis"] = "semantic-external"

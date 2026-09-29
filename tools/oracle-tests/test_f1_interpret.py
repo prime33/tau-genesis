@@ -139,3 +139,17 @@ def test_output_lookback_needs_initial_conjunct_per_output():
     rb, rf = o.interpret_repl(bare, steps), o.interpret_repl(fixed, steps)
     assert rb["steps"][0]["given"] == {} and rb["output_series"]["o1"][0] == "F"
     assert rf["steps"][0]["given"] and rf["output_series"]["o1"] == ["T", "T", "F"] and rf["output_series"]["o2"] == ["F", "T", "F"]
+
+
+@skip
+def test_tau_valued_output_compares_by_normal_form():
+    """Curriculum row 5: a tau-typed output holding a specification prints as its normalised formula; the driver compares
+    it with an expected `{ spec } : tau` constant through `normalize` (measured 2026-09-29 on the box)."""
+    o = _o()
+    spec = ("i : tau := in console. o : tau := out console. always ((i[t] != 0 -> o[t] = { always o1[t] = i1[t] } : tau) "
+            "&& (i[t] = 0 -> o[t] = { always o1[t] = i1[t]' } : tau))")
+    r = o.interpret_repl(spec, [{"i": "T"}, {"i": "F"}])
+    got = r["output_series_raw"]["o"]
+    assert o.tau_equal(got[0], "{ always o1[t] = i1[t] } : tau")
+    assert o.tau_equal(got[1], "{ always o1[t] = i1[t]' } : tau")
+    assert not o.tau_equal(got[0], got[1])
