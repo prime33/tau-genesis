@@ -23,6 +23,8 @@ The 47 accepted specifications are in `tools/learner/out/`, each with the attemp
 
 ## How to read this repository
 
+The whole on one page: `docs/MAP.md`. Every term in use, one line each: `docs/LANGUEDOC.md` §3. For a person in a room rather than a reader of code: `dao/template/PARTICIPANTE.md`.
+
 **The 2025 proposal**, unchanged, is everything the original README described: `constitution/`, `streams/`, `amendments/` (now under `streams/amendments/`, v3 form; the Family A text is in git history at `c55ce7c~1`), `manifesto/`, `economy/`, `testnet/`, `agents/seed/`, `tree_of_life/`, `tower_of_babel/`, `transcompiler/`. That README is preserved verbatim as `docs/proposal/README-2025.md`. Its checkmarks describe what the proposal intended; the table above describes what has been verified.
 
 **The 2026 reconciliation** sits beside it:

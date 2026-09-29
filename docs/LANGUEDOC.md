@@ -35,3 +35,61 @@ Rule: every clause that must *execute* and today compares `alignment_with_being`
 
 Each rewrite becomes a candidate stream `…_v0.2.tau` only after the author signs this table; until then the originals stand and `alignment_with_being` remains a forbidden identifier for any spec the oracle sees.
 
+
+## 3. Glossary — every term in use, one line each (the shared-glossary requirement, applied to ourselves)
+
+**RULE (2026-09-29).** No term enters a document of this project without a line here. A term that is not here is not used. Identifier families are frozen at three for the record (D decisions, Q questions, M mappings) plus test names; G, R, A, F, L and S identifiers already in the documents keep their meaning and gain no new members.
+
+| Term | Meaning, one sentence | Where it lives |
+|---|---|---|
+| proposal | The 2025 text of this repository: constitution, streams, amendments, manifesto, written as pseudocode. | `constitution/`, `streams/`, `docs/proposal/README-2025.md` |
+| foundation | The Tau Language as IDNI ships it, pinned at commit `3badb21`. | IDNI's `tau-lang`; `docs/tau-curriculum.md` |
+| specification | A Tau formula over streams that the executable parses; "spec" for short. | everywhere |
+| stream | A named sequence of values in time, input or output, declared in a specification. | Tau; `tools/tau_oracle.py` |
+| verifier, oracle | The `tau` executable driven by `tools/tau_oracle.py`: parse, satisfiability, normalisation, execution. | `tools/tau_oracle.py` |
+| verified | Parsed, found satisfiable, and executed with the asserted outputs against a test written before generation. | `README.md`, the rule |
+| hidden test | A pre-registered acceptance test the model never sees; only its stream interface is shown. | `tools/learner/tests/` |
+| learner | The loop retrieval → generation → verification that produces specifications from proposal fragments. | `tools/learner/`, `docs/learner-v1.md` |
+| fragment | One clause, definition or rule of the proposal sent to the learner. | `tools/learner/run.py` |
+| curriculum | The ordered list of Tau capabilities with what the corpus and the learner have demonstrated. | `docs/tau-curriculum.md` |
+| ablation | The learner run with parts of the prompt removed, to see what they contribute. | `docs/tau-curriculum.md` |
+| reduced | A verified specification that reads exactly one input and copies it; correct by design, flagged. | `docs/tau-curriculum.md` |
+| mapping (M) | One row per proposal construct: the Tau construct it maps to and a verdict. | `docs/reconciliation/mapping.md` |
+| faculty | A capability the language does not provide and the room needs above it (F1–F11). | `docs/reconciliation/faculties.md` |
+| gap (G) | A place where proposal and foundation genuinely disagree, both sides quoted. | `docs/reconciliation/gaps.md` |
+| decision (D) | A signed choice by the author, numbered, never rewritten. | private record; cited by number |
+| question (Q) | An open item the author must answer, numbered. | private record; cited by number |
+| rewrite (R) | A proposed change to a proposal sentence awaiting the author's signature. | `docs/LANGUEDOC.md` §2 |
+| Family A / v3 | The amendments as first written / their later head-conjunction rewrite; A is canonical (D20). | `docs/proposal/family-a/`, `streams/amendments/` |
+| primitive | A constitutional term oriented to and never computed: `being`, `alignment_with_being` (D19). | `docs/LANGUEDOC.md` |
+| room | A community as an environment that invites participation, run on the template. | `dao/TEMPLATE.md` |
+| instance | One room's private ops that passes the conformance suite. | `dao/template/` |
+| seed | An identity with presence in a room: a person in a public role, an institution, an agent, a river. | `dao/TEMPLATE.md`, `agents/seed/` |
+| natural seed | A seed that is not a person or institution (a river, a mountain range), spoken for by records. | `dao/TEMPLATE.md` §8 |
+| force | One of the three separate processes of a room: Affirming, Negating, Reconciling. | `dao/TEMPLATE.md` §1 |
+| Affirming | The force that records everything that enters, raw, with provenance; never prunes. | `dao/TEMPLATE.md` |
+| Negating | The force that objects, on agent outputs only, citing records; never on human input. | `dao/TEMPLATE.md` |
+| Reconciling | The force that proposes candidate specifications and minority reports. | `dao/TEMPLATE.md` |
+| signer | The role that publishes: no candidate returns to the room unsigned. | `dao/TEMPLATE.md` §5 |
+| ledger | The Affirming record: append-only, hash-chained lines, one file per surface per month. | `dao/template/schema/record.schema.json` |
+| record | One ledger line with id, previous hash, time, surface, author class, text, provenance. | same |
+| redaction | A record that blanks a text on the emitter's request and keeps the event. | `dao/TEMPLATE.md` §6 |
+| candidate | A specification Reconciling proposes, run through the verifier, awaiting a DECIDE. | `room.py propose` |
+| DECIDE | The signed record that enacts a candidate or a disclosure; the room's only act of publication. | `room.py decide` |
+| minority report | The record of what a revision dropped and who objected, kept verbatim. | `tools/minority_report.py` |
+| spec-diff | What a revision keeps, drops or makes conditional, clause by clause. | `tools/spec_diff.py` |
+| weight | A computed, per-domain, revisable measure of a seed's record; never assigned, never a vote count. | `dao/weight.md` |
+| direction | A seed's agree/disagree relation to a position; the opinion map's input. | `dao/weight.md` |
+| variable | A named fact of a room with a class: public by source, public by decision, private, shielded. | `dao/template/schema/variable.schema.json` |
+| disclosure | A DECIDE that changes a variable's class; private by default, public by decision. | `room.py disclose` |
+| consent level | How a person appears: public name, role only, anonymous, keyed pseudonym. | `dao/template/schema/consent.schema.json` |
+| anchor | A dust shielded Zcash transaction whose memo carries the ledger and decision heads; notary only, never money. | `dao/template/tools/anchor.py` |
+| viewing key | The key that lets someone read a room's anchor stream; giving it is a logged consent. | `dao/template/tools/anchor_verify.py` |
+| boundary | A force may read only the streams it declares; no wire, no read. | `dao/template/tools/boundary_check.py` |
+| conformance | The test suite a directory must pass to be a room; its version is in every DECIDE. | `dao/template/conformance/` |
+| template | The constitution (`TEMPLATE.md`) plus the schemas, runtime and suite (`template/`). | `dao/` |
+| runtime | `room.py`: eight verbs that write schema-valid records and judge nothing. | `dao/template/tools/room.py` |
+| companion | The model instance that does this work under the author's direction; every claim it makes is checkable. | private record |
+| author | The person who wrote the proposal and signs decisions. | everywhere |
+| FACT / INFERENCE / SPECULATION | Confirmed against primary data / a reading of it / a guess; every claim carries one. | house rule |
+| in-sample / hidden | A number measured on what the model saw / on tests it never saw; always stated. | house rule |
