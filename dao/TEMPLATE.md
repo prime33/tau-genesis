@@ -8,6 +8,9 @@ Labels: **RULE** = binding on any instance. **DEFAULT** = instance may override 
 
 ---
 
+
+> **v1.0-draft (2026-09-29): the template runs.** What binds stays here as text (§1, §3, §8, §10, §12, §13). What checks lives in [`template/`](template/README.md): one JSON Schema per record kind, the runtime `room.py` (init, affirm, object, propose, decide, disclose, anchor, verify), and the conformance suite. A directory is a room iff `room.py verify <dir>` passes; every DECIDE records the suite version it passed under. Section → what enforces it: §1 RULEs → `test_B_boundary` (declared wires only; a force never reads another's scratch; adversarial reads and truncation fail on a deployed room); §4 gates → `room.py propose` (the verifier disposes) and `test_F04`; §5 approval → `room.py decide` (refused without a satisfiable candidate and a keyed signatory) and `test_S5`; §6 ledger → `chain.py`, `test_S6`, `test_F06`; §7 weight → `dao/weight.md` (above the runtime, unchanged); §9 spend → `spend.jsonl` schema; F1–F17 → the tests named by their number where one exists (F4, F6, F7, F11, F14 today; the rest are the suite's backlog). The seventeen fixes stay in this file: they are the record of what went wrong once, stated as conditions, and the reason the suite exists.
+
 ## 1. Shape
 
 An instance is a room with three forces and a record. It has:

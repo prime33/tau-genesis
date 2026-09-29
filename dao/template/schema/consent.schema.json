@@ -1,0 +1,60 @@
+{
+ "title": "consent record",
+ "type": "object",
+ "required": [
+  "id",
+  "prev",
+  "hash",
+  "ts",
+  "pseudonym",
+  "level",
+  "purpose"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{12}$"
+  },
+  "prev": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "hash": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "ts": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+  },
+  "pseudonym": {
+   "type": "string",
+   "minLength": 8
+  },
+  "level": {
+   "enum": [
+    "public-name",
+    "role-only",
+    "anonymous",
+    "keyed-pseudonym"
+   ]
+  },
+  "purpose": {
+   "type": "string"
+  },
+  "media": {
+   "type": "boolean"
+  },
+  "removed": {
+   "type": "boolean"
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

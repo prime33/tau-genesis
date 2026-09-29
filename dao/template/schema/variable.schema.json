@@ -1,0 +1,36 @@
+{
+ "title": "variables registry entry (D28)",
+ "type": "object",
+ "required": [
+  "name",
+  "source",
+  "class"
+ ],
+ "properties": {
+  "name": {
+   "type": "string"
+  },
+  "source": {
+   "type": "string"
+  },
+  "class": {
+   "enum": [
+    "public-by-source",
+    "public-by-decision",
+    "private",
+    "shielded"
+   ]
+  },
+  "spec": {
+   "type": "string"
+  },
+  "anchor": {
+   "type": "string"
+  },
+  "decision": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{12}$"
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

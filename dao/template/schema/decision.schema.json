@@ -1,0 +1,105 @@
+{
+ "title": "DECIDE record (TEMPLATE \u00a75, F8, F15)",
+ "type": "object",
+ "required": [
+  "id",
+  "prev",
+  "hash",
+  "ts",
+  "kind",
+  "target",
+  "signatory",
+  "conformance_version"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{12}$"
+  },
+  "prev": {
+   "anyOf": [
+    {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "hash": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "ts": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+  },
+  "kind": {
+   "enum": [
+    "DECIDE",
+    "DISCLOSE",
+    "REVOKE"
+   ]
+  },
+  "target": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "pattern": "^[a-z0-9_.-]+@v?[0-9][0-9a-z.-]*$"
+   },
+   "minItems": 1
+  },
+  "spec_hash": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "verdict": {
+   "enum": [
+    "T",
+    "F"
+   ]
+  },
+  "test_hash": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "signatory": {
+   "type": "object",
+   "required": [
+    "role",
+    "key_id"
+   ],
+   "properties": {
+    "role": {
+     "type": "string"
+    },
+    "key_id": {
+     "type": "string",
+     "minLength": 8
+    }
+   }
+  },
+  "conformance_version": {
+   "type": "string"
+  },
+  "anchor_txid": {
+   "type": "string"
+  },
+  "reason": {
+   "type": "string"
+  },
+  "variable": {
+   "type": "string"
+  },
+  "class": {
+   "enum": [
+    "public-by-source",
+    "public-by-decision",
+    "private",
+    "shielded"
+   ]
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

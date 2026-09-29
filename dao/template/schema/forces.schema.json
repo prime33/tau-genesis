@@ -1,0 +1,37 @@
+{
+ "title": "forces and their wires (\u00a71 RULEs, boundary)",
+ "type": "object",
+ "required": [
+  "affirming",
+  "negating",
+  "reconciling"
+ ],
+ "additionalProperties": {
+  "type": "object",
+  "required": [
+   "spec",
+   "may_read"
+  ],
+  "properties": {
+   "spec": {
+    "type": "string"
+   },
+   "may_read": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "scratch": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "unix_user": {
+    "type": "string"
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
