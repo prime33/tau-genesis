@@ -1,0 +1,82 @@
+{
+  "_about": "External, pre-registered acceptance tests for curriculum step 2 (learner-v1.md §3 item 2): the amendment mechanics of constitution/update_process.tau and constitution/consensus_logic.tau. Written 2026-09-29 by the companion from the author's clauses BEFORE any generation against them; never shown to the model. The model receives only `interface`; `steps`/`expected` stay hidden and are compared exactly against the oracle's output series. Every test has at least one step where the predicate is F. Encodings are the companion's INFERENCE from the clause text plus the mapping rows (M025–M036); each `note` says where the reading is a choice. Two concepts of these files are NOT tested and not sent: `semantic_diff` (M027, needs faculty F3: spec_diff) and `fork_resolution` (M036, not expressible: one running spec). D21 binds `amendment_quorum`: the number is in Tau, weight is above it, so the quorum test is a fixed count. Each test was checked achievable at pin 3badb21 with a companion reference spec through the oracle before registration (kb/learner/step2-reference-check.json in the ops repo).",
+  "tests": {
+    "stream_version": {
+      "phrase": "\"a declared state of a logic stream identified by version metadata and content hash\" : stream_version (update_process clause_001)",
+      "interface": {"inputs": {"i_version_declared": "a version of the stream is declared at t (metadata and hash supplied by the host, M025)"}, "outputs": {"o_stream_version": "the predicate holds at t: the stream has a declared version, at t or at any earlier step"}},
+      "steps": [{"i_version_declared": "F"}, {"i_version_declared": "T"}, {"i_version_declared": "F"}, {"i_version_declared": "F"}],
+      "expected": {"o_stream_version": ["F", "T", "T", "T"]},
+      "note": "A version, once declared, stays a version until superseded, so the bit latches: o[0] = i[0] && o[t] = i[t] | o[t-1]. Hashing and metadata are host-side (M025); the test only asks for the latch. A per-step identity fails steps 3-4."
+    },
+    "proposed_amendment": {
+      "phrase": "\"a semantically defined clause or clause set intended to modify or extend a previously versioned stream\" : proposed_amendment (update_process clause_002)",
+      "interface": {"inputs": {"i_clause_submitted": "a clause or clause set is submitted at t", "i_targets_versioned_stream": "the submission names a previously versioned stream it modifies or extends"}, "outputs": {"o_proposed_amendment": "the predicate holds at t"}},
+      "steps": [{"i_clause_submitted": "T", "i_targets_versioned_stream": "T"}, {"i_clause_submitted": "T", "i_targets_versioned_stream": "F"}, {"i_clause_submitted": "F", "i_targets_versioned_stream": "T"}, {"i_clause_submitted": "F", "i_targets_versioned_stream": "F"}],
+      "expected": {"o_proposed_amendment": ["T", "F", "F", "F"]},
+      "note": "A clause set with no versioned target is a new stream, not an amendment (M026: the value written into `u`)."
+    },
+    "consensus_threshold": {
+      "phrase": "\"a context-dependent agreement level required to enact a proposed_amendment as valid law\" (update_process clause_003) / \"the minimum necessary degree of logical agreement required to ratify\" (consensus_logic clause_002) : consensus_threshold",
+      "interface": {"inputs": {"i_threshold_defined": "a threshold is defined for the current context at t", "i_agreement_meets_level": "the agreement measured at t meets that level"}, "outputs": {"o_consensus_threshold": "the predicate holds at t: the threshold is met"}},
+      "steps": [{"i_threshold_defined": "T", "i_agreement_meets_level": "T"}, {"i_threshold_defined": "T", "i_agreement_meets_level": "F"}, {"i_threshold_defined": "F", "i_agreement_meets_level": "T"}, {"i_threshold_defined": "F", "i_agreement_meets_level": "F"}],
+      "expected": {"o_consensus_threshold": ["T", "F", "F", "F"]},
+      "note": "'Context-dependent' is read as: no threshold defined for the context, nothing can meet it (G04: three quantities are called consensus; the level itself is a host input, M007)."
+    },
+    "historical_integrity": {
+      "phrase": "\"the property by which previous versions and their semantics remain referenceable and traceable within the update lineage\" : historical_integrity (update_process clause_005)",
+      "interface": {"inputs": {"i_version_logged": "the version current at t was logged to the lineage before being replaced (M028: `this[t]` written to a file stream)"}, "outputs": {"o_historical_integrity": "the predicate holds at t: every version up to and including t is traceable"}},
+      "steps": [{"i_version_logged": "T"}, {"i_version_logged": "T"}, {"i_version_logged": "F"}, {"i_version_logged": "T"}],
+      "expected": {"o_historical_integrity": ["T", "T", "F", "F"]},
+      "note": "Cumulative like evaluates_lineage: one unlogged version breaks the lineage for good, o[0] = i[0] && o[t] = i[t] & o[t-1]. This is the idiom the learner missed at step 1; registered here on purpose so the retrieval fix is measured, not assumed."
+    },
+    "recursive_legitimacy": {
+      "phrase": "\"the requirement that an amendment to a stream respects that stream's meta-rules and constitutional ancestry\" : recursive_legitimacy (update_process clause_006)",
+      "interface": {"inputs": {"i_amendment_proposed": "an amendment is proposed at t", "i_respects_meta_rules": "it respects the stream's meta-rules", "i_respects_ancestry": "it respects the stream's constitutional ancestry"}, "outputs": {"o_recursive_legitimacy": "the predicate holds at t of the proposed amendment"}},
+      "steps": [{"i_amendment_proposed": "T", "i_respects_meta_rules": "T", "i_respects_ancestry": "T"}, {"i_amendment_proposed": "T", "i_respects_meta_rules": "T", "i_respects_ancestry": "F"}, {"i_amendment_proposed": "T", "i_respects_meta_rules": "F", "i_respects_ancestry": "T"}, {"i_amendment_proposed": "F", "i_respects_meta_rules": "T", "i_respects_ancestry": "T"}, {"i_amendment_proposed": "T", "i_respects_meta_rules": "T", "i_respects_ancestry": "T"}],
+      "expected": {"o_recursive_legitimacy": ["T", "F", "F", "F", "T"]},
+      "note": "The property is of an amendment; with nothing proposed there is nothing legitimate (step 4 F). Choice: not vacuous truth, unlike does_not_contradict_prior_reasoning, because clause_007 consumes it as a positive premise for ratification."
+    },
+    "semantic_consensus": {
+      "phrase": "\"a verifiable alignment among agent-declared logic streams sufficient to enact change or affirm shared meaning\" : semantic_consensus (consensus_logic clause_001)",
+      "interface": {"inputs": {"i_streams_jointly_satisfiable": "the agent-declared streams are jointly satisfiable at t (M032: sat of the conjunction)", "i_sufficient_to_enact": "the alignment meets the enactment condition at t"}, "outputs": {"o_semantic_consensus": "the predicate holds at t"}},
+      "steps": [{"i_streams_jointly_satisfiable": "T", "i_sufficient_to_enact": "T"}, {"i_streams_jointly_satisfiable": "T", "i_sufficient_to_enact": "F"}, {"i_streams_jointly_satisfiable": "F", "i_sufficient_to_enact": "T"}, {"i_streams_jointly_satisfiable": "F", "i_sufficient_to_enact": "F"}],
+      "expected": {"o_semantic_consensus": ["T", "F", "F", "F"]},
+      "note": "Alignment that is not sufficient to enact is agreement, not consensus (tau.net: consensus is where agreement meets the conditions to change the specification)."
+    },
+    "amendment_quorum": {
+      "phrase": "\"the number or weight of identity_traces that must contribute or affirm a proposed_amendment\" : amendment_quorum (consensus_logic clause_003)",
+      "interface": {"inputs": {"i_affirm_a": "identity a affirms the proposed amendment at t", "i_affirm_b": "identity b affirms at t", "i_affirm_c": "identity c affirms at t"}, "outputs": {"o_amendment_quorum": "the predicate holds at t: the quorum for this stream is TWO of the three identities (D21: the number is in Tau; weight is above it and not part of this test)"}},
+      "steps": [{"i_affirm_a": "T", "i_affirm_b": "T", "i_affirm_c": "F"}, {"i_affirm_a": "T", "i_affirm_b": "F", "i_affirm_c": "F"}, {"i_affirm_a": "F", "i_affirm_b": "F", "i_affirm_c": "F"}, {"i_affirm_a": "T", "i_affirm_b": "T", "i_affirm_c": "T"}, {"i_affirm_a": "F", "i_affirm_b": "T", "i_affirm_c": "T"}],
+      "expected": {"o_amendment_quorum": ["T", "F", "F", "T", "T"]},
+      "note": "At-least-two-of-three: (a&b) | (a&c) | (b&c). Distinct identities are distinct streams, so double-voting is impossible by construction (testnet: votes are a set). A single-affirmer spec fails step 2 by being T; a unanimity spec fails steps 1 and 5."
+    },
+    "contradiction_detection": {
+      "phrase": "\"a process which identifies unresolved logical conflict between coexisting or versioned streams\" : contradiction_detection (consensus_logic clause_004)",
+      "interface": {"inputs": {"i_conflict_found": "the check found a logical conflict between coexisting streams at t (M034: unsat of the conjunction)", "i_conflict_resolved": "the conflict found at t was resolved at t"}, "outputs": {"o_contradiction_detection": "the predicate holds at t: an UNRESOLVED conflict is detected"}},
+      "steps": [{"i_conflict_found": "T", "i_conflict_resolved": "F"}, {"i_conflict_found": "T", "i_conflict_resolved": "T"}, {"i_conflict_found": "F", "i_conflict_resolved": "F"}, {"i_conflict_found": "F", "i_conflict_resolved": "T"}],
+      "expected": {"o_contradiction_detection": ["T", "F", "F", "F"]},
+      "note": "Detection yields a bit, not a locus (G10). Step 4 (resolved without found) is F: nothing to detect."
+    },
+    "consensus_finality": {
+      "phrase": "\"a state in which no further contradiction is found and a semantic consensus remains stable across verification cycles\" : consensus_finality (consensus_logic clause_005)",
+      "interface": {"inputs": {"i_contradiction_found": "a verification cycle at t found a contradiction", "i_consensus_holds": "semantic consensus holds at t"}, "outputs": {"o_consensus_finality": "the predicate holds at t: no contradiction and consensus at t AND at the previous cycle (two consecutive clean cycles; never at t = 0, one cycle is not 'across cycles')"}},
+      "steps": [{"i_contradiction_found": "F", "i_consensus_holds": "T"}, {"i_contradiction_found": "F", "i_consensus_holds": "T"}, {"i_contradiction_found": "T", "i_consensus_holds": "T"}, {"i_contradiction_found": "F", "i_consensus_holds": "T"}, {"i_contradiction_found": "F", "i_consensus_holds": "T"}],
+      "expected": {"o_consensus_finality": ["F", "T", "F", "F", "T"]},
+      "note": "'Across verification cycles' is read as a window of two: o[0] = F && o[t] = c[t]' & s[t] & c[t-1]' & s[t-1]. Bounded, like the README's fixpoint (M035: a cap is a bound on the search, not a proof). A per-step spec fails steps 1 and 4."
+    },
+    "update_process": {
+      "phrase": "clause_007: \"if ( proposed_amendment achieves consensus_threshold ) and ( it preserves historical_integrity and recursive_legitimacy ) then ( it may be ratified as a new stream_version. )\"",
+      "interface": {"inputs": {"i_threshold_reached": "the proposed amendment achieves the consensus threshold at t", "i_historical_integrity": "it preserves historical integrity", "i_recursive_legitimacy": "it has recursive legitimacy"}, "outputs": {"o_may_ratify": "the amendment may be ratified as a new stream version at t"}},
+      "steps": [{"i_threshold_reached": "T", "i_historical_integrity": "T", "i_recursive_legitimacy": "T"}, {"i_threshold_reached": "T", "i_historical_integrity": "T", "i_recursive_legitimacy": "F"}, {"i_threshold_reached": "F", "i_historical_integrity": "T", "i_recursive_legitimacy": "T"}, {"i_threshold_reached": "T", "i_historical_integrity": "F", "i_recursive_legitimacy": "T"}, {"i_threshold_reached": "T", "i_historical_integrity": "T", "i_recursive_legitimacy": "T"}],
+      "expected": {"o_may_ratify": ["T", "F", "F", "F", "T"]},
+      "note": "Rule form per D20 (antecedents preserved → obligation holds), read as a biconditional for the permission bit: 'may' is a conjunction of the three premises, nothing more. The clause says nothing about ratification WITHOUT the premises; the F rows encode that the permission is not granted, which is the only reading a decidable spec can test."
+    },
+    "consensus_logic": {
+      "phrase": "clause_007: \"if ( amendment_quorum is reached and contradiction_detection yields no blocking conflict ) then ( semantic_consensus is achieved and consensus_finality may be declared. fork_resolution only required if multiple stable consensuses persist. )\"",
+      "interface": {"inputs": {"i_quorum_reached": "the amendment quorum is reached at t", "i_blocking_conflict": "contradiction detection yields a blocking conflict at t"}, "outputs": {"o_semantic_consensus": "semantic consensus is achieved at t", "o_finality_declarable": "consensus finality may be declared at t"}},
+      "steps": [{"i_quorum_reached": "T", "i_blocking_conflict": "F"}, {"i_quorum_reached": "T", "i_blocking_conflict": "T"}, {"i_quorum_reached": "F", "i_blocking_conflict": "F"}, {"i_quorum_reached": "T", "i_blocking_conflict": "F"}],
+      "expected": {"o_semantic_consensus": ["T", "F", "F", "T"], "o_finality_declarable": ["T", "F", "F", "T"]},
+      "note": "Two outputs from one rule; both are quorum & no-blocking-conflict. The fork_resolution sentence is not testable (M036) and belongs in the model's `unmapped`; a spec that also declares a fork stream is not penalised as long as the two required outputs match."
+    }
+  }
+}

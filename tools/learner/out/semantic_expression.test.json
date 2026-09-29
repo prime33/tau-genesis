@@ -1,0 +1,1 @@
+{"steps": [{"i_emitted": "T", "i_from_declared_identity": "T"}, {"i_emitted": "T", "i_from_declared_identity": "F"}, {"i_emitted": "F", "i_from_declared_identity": "T"}, {"i_emitted": "F", "i_from_declared_identity": "F"}], "expected": {"o_semantic_expression": ["T", "F", "F", "F"]}}

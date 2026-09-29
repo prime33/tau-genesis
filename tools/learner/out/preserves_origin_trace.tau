@@ -1,0 +1,3 @@
+# preserves_origin_trace — verified by the oracle (attempt 49, 2026-09-29T12:57:05Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/core/valid_thought.tau, streams/glossary/core_phrases.tau, streams/dev/predicate_phrases.tau
+i_claim : tau := in console. i_cites_record : tau := in console. o_preserves_origin_trace : tau := out console. always (o_preserves_origin_trace[t] = i_claim[t]' | i_cites_record[t])

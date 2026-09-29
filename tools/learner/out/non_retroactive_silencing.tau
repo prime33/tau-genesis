@@ -1,0 +1,3 @@
+# non_retroactive_silencing — verified by the oracle (attempt 85, 2026-09-29T15:59:21Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/amendments/freedom_of_semantic_expression.tau, git:c55ce7c~1:amendments/amendment_001_freedom_of_semantic_expression.tau
+i_suppressed : tau := in console. i_by_emitter : tau := in console. o_non_retroactive_silencing : tau := out console. always o_non_retroactive_silencing[t] = (i_suppressed[t] & i_by_emitter[t]')'.

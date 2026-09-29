@@ -1,0 +1,1 @@
+{"steps": [{"i_obf": "F", "i_iso": "F"}, {"i_obf": "T", "i_iso": "F"}, {"i_obf": "F", "i_iso": "T"}, {"i_obf": "T", "i_iso": "T"}], "expected": {"o_prohibited": ["F", "T", "T", "T"], "o_complies": ["T", "F", "F", "F"]}}

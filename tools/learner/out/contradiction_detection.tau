@@ -1,0 +1,3 @@
+# contradiction_detection — verified by the oracle (attempt 64, 2026-09-29T14:36:27Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: constitution/consensus_logic.tau
+i_conflict_found : tau := in console. i_conflict_resolved : tau := in console. o_contradiction_detection : tau := out console. always (o_contradiction_detection[t] = i_conflict_found[t] & i_conflict_resolved[t]').

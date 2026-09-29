@@ -1,0 +1,1 @@
+{"steps": [{"i_version_logged": "T"}, {"i_version_logged": "T"}, {"i_version_logged": "F"}, {"i_version_logged": "T"}], "expected": {"o_historical_integrity": ["T", "T", "F", "F"]}}

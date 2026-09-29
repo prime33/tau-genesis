@@ -1,0 +1,1 @@
+{"steps": [{"i_clause_submitted": "T", "i_targets_versioned_stream": "T"}, {"i_clause_submitted": "T", "i_targets_versioned_stream": "F"}, {"i_clause_submitted": "F", "i_targets_versioned_stream": "T"}, {"i_clause_submitted": "F", "i_targets_versioned_stream": "F"}], "expected": {"o_proposed_amendment": ["T", "F", "F", "F"]}}

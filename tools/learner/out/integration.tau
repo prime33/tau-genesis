@@ -1,0 +1,3 @@
+# integration — verified by the oracle (attempt 88, 2026-09-29T16:02:24Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/amendments/semantic_resonance_and_integration.tau, git:c55ce7c~1:amendments/amendment_002_semantic_resonance_and_integration.tau
+i_conflict_present : tau := in console. i_reconciling : tau := in console. i_origin_suppressed : tau := in console. o_integration : tau := out console. always (o_integration[t] = i_conflict_present[t] & i_reconciling[t] & i_origin_suppressed[t]')

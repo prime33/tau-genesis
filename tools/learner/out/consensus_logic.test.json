@@ -1,0 +1,1 @@
+{"steps": [{"i_quorum_reached": "T", "i_blocking_conflict": "F"}, {"i_quorum_reached": "T", "i_blocking_conflict": "T"}, {"i_quorum_reached": "F", "i_blocking_conflict": "F"}, {"i_quorum_reached": "T", "i_blocking_conflict": "F"}], "expected": {"o_semantic_consensus": ["T", "F", "F", "T"], "o_finality_declarable": ["T", "F", "F", "T"]}}

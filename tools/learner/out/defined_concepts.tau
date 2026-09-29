@@ -1,0 +1,3 @@
+# defined_concepts — verified by the oracle (attempt 48, 2026-09-29T12:56:12Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/core/valid_thought.tau, streams/glossary/core_phrases.tau
+i_uses_term : tau := in console. i_term_defined : tau := in console. o_defined_concepts : tau := out console. always i_term_defined[t] | i_uses_term[t]' = o_defined_concepts[t]

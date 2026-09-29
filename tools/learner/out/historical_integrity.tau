@@ -1,0 +1,3 @@
+# historical_integrity — verified by the oracle (attempt 74, 2026-09-29T14:47:53Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: constitution/update_process.tau
+i_version_logged : tau := in console. o_historical_integrity : tau := out console. always (o_historical_integrity[0] = i_version_logged[0] && o_historical_integrity[t] = o_historical_integrity[t-1] & i_version_logged[t]).

@@ -1,0 +1,1 @@
+{"steps": [{"i_threshold_defined": "T", "i_agreement_meets_level": "T"}, {"i_threshold_defined": "T", "i_agreement_meets_level": "F"}, {"i_threshold_defined": "F", "i_agreement_meets_level": "T"}, {"i_threshold_defined": "F", "i_agreement_meets_level": "F"}], "expected": {"o_consensus_threshold": ["T", "F", "F", "F"]}}

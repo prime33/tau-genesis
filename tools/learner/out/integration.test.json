@@ -1,0 +1,1 @@
+{"steps": [{"i_conflict_present": "T", "i_reconciling": "T", "i_origin_suppressed": "F"}, {"i_conflict_present": "T", "i_reconciling": "T", "i_origin_suppressed": "T"}, {"i_conflict_present": "T", "i_reconciling": "F", "i_origin_suppressed": "F"}, {"i_conflict_present": "F", "i_reconciling": "T", "i_origin_suppressed": "F"}], "expected": {"o_integration": ["T", "F", "F", "F"]}}

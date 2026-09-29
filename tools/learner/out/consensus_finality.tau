@@ -1,0 +1,3 @@
+# consensus_finality — verified by the oracle (attempt 65, 2026-09-29T14:37:22Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: constitution/consensus_logic.tau
+i_contradiction_found : tau := in console. i_consensus_holds : tau := in console. o_consensus_finality : tau := out console. always (o_consensus_finality[0] = 0 && o_consensus_finality[t] = i_contradiction_found[t]' & i_consensus_holds[t] & i_contradiction_found[t-1]' & i_consensus_holds[t-1])

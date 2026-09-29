@@ -1,0 +1,1 @@
+{"steps": [{"i_emission": "T", "i_rejected": "F"}, {"i_emission": "F", "i_rejected": "T"}, {"i_emission": "T", "i_rejected": "T"}, {"i_emission": "F", "i_rejected": "F"}], "expected": {"o_freedom_of_expression": ["T", "T", "F", "T"]}}

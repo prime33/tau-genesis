@@ -1,0 +1,3 @@
+# semantic_alignment_duty — verified by the oracle (attempt 94, 2026-09-29T16:08:38Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/amendments/babel_antipattern_principle.tau, git:c55ce7c~1:amendments/amendment_003_babel_antipattern.tau
+i_contribution : tau := in console. i_ambiguity_arises : tau := in console. i_resolved_by_consensus : tau := in console. o_semantic_alignment_duty : tau := out console. always (o_semantic_alignment_duty[t] = (i_contribution[t] & i_ambiguity_arises[t] & i_resolved_by_consensus[t]')')

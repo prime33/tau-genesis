@@ -1,0 +1,1 @@
+{"steps": [{"i_requires_term": "T", "i_provider_exists": "T"}, {"i_requires_term": "T", "i_provider_exists": "F"}, {"i_requires_term": "F", "i_provider_exists": "F"}, {"i_requires_term": "F", "i_provider_exists": "T"}], "expected": {"o_logically_consistent_with_upstream_definitions": ["T", "F", "T", "T"]}}

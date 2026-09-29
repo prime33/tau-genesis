@@ -1,0 +1,1 @@
+{"steps": [{"i_affirm_a": "T", "i_affirm_b": "F", "i_affirm_c": "F"}, {"i_affirm_a": "T", "i_affirm_b": "T", "i_affirm_c": "F"}, {"i_affirm_a": "F", "i_affirm_b": "T", "i_affirm_c": "T"}, {"i_affirm_a": "T", "i_affirm_b": "T", "i_affirm_c": "T"}], "expected": {"o_amendment_quorum": ["F", "T", "T", "T"]}}

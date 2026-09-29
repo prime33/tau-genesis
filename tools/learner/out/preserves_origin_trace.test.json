@@ -1,0 +1,1 @@
+{"steps": [{"i_claim": "T", "i_cites_record": "T"}, {"i_claim": "T", "i_cites_record": "F"}, {"i_claim": "F", "i_cites_record": "F"}, {"i_claim": "F", "i_cites_record": "T"}], "expected": {"o_preserves_origin_trace": ["T", "F", "T", "T"]}}

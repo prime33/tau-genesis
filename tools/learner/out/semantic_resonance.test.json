@@ -1,0 +1,1 @@
+{"steps": [{"i_jointly_satisfiable": "T", "i_same_direction": "T"}, {"i_jointly_satisfiable": "T", "i_same_direction": "F"}, {"i_jointly_satisfiable": "F", "i_same_direction": "T"}, {"i_jointly_satisfiable": "F", "i_same_direction": "F"}], "expected": {"o_semantic_resonance": ["T", "F", "F", "F"]}}

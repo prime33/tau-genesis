@@ -1,0 +1,3 @@
+# amendment_quorum — verified by the oracle (attempt 77, 2026-09-29T14:50:28Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: constitution/consensus_logic.tau
+i_affirm_a : tau := in console. i_affirm_b : tau := in console. i_affirm_c : tau := in console. o_amendment_quorum : tau := out console. always o_amendment_quorum[t] = (i_affirm_a[t] & i_affirm_b[t]) | (i_affirm_a[t] & i_affirm_c[t]) | (i_affirm_b[t] & i_affirm_c[t]).

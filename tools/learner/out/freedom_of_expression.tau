@@ -1,0 +1,3 @@
+# freedom_of_expression — verified by the oracle (attempt 84, 2026-09-29T15:58:31Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/amendments/freedom_of_semantic_expression.tau, git:c55ce7c~1:amendments/amendment_001_freedom_of_semantic_expression.tau
+i_emission : tau := in console. i_rejected : tau := in console. o_freedom_of_expression : tau := out console. always (o_freedom_of_expression[t] = (i_emission[t] & i_rejected[t])').

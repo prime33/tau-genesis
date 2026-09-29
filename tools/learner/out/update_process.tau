@@ -1,0 +1,3 @@
+# update_process — verified by the oracle (attempt 66, 2026-09-29T14:38:14Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: constitution/update_process.tau
+i_threshold_reached : tau := in console. i_historical_integrity : tau := in console. i_recursive_legitimacy : tau := in console. o_may_ratify : tau := out console. always (o_may_ratify[t] = i_threshold_reached[t] & i_historical_integrity[t] & i_recursive_legitimacy[t])

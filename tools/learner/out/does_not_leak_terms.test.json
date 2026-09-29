@@ -1,0 +1,1 @@
+{"steps": [{"i_term_used": "F", "i_term_from_outside": "F"}, {"i_term_used": "T", "i_term_from_outside": "F"}, {"i_term_used": "T", "i_term_from_outside": "T"}, {"i_term_used": "F", "i_term_from_outside": "T"}], "expected": {"o_does_not_leak_terms": ["T", "T", "F", "T"]}}

@@ -1,0 +1,1 @@
+{"steps": [{"i_author_declared": "T", "i_identity_stream_exists": "T"}, {"i_author_declared": "T", "i_identity_stream_exists": "F"}, {"i_author_declared": "F", "i_identity_stream_exists": "T"}, {"i_author_declared": "F", "i_identity_stream_exists": "F"}], "expected": {"o_has_identity_stream": ["T", "F", "F", "F"]}}

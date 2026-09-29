@@ -1,0 +1,89 @@
+{
+  "_about": "External, pre-registered acceptance tests for the twelve valid_thought predicates (streams/core/valid_thought.tau, Family B). Written 2026-09-29 by the companion from the author's phrases BEFORE any generation against them; never shown to the model. The model receives only `interface` (stream names and meanings) and must produce a spec over exactly those streams. `expected` is compared exactly against the oracle's output series. Every test carries at least one step where the predicate must be F. Encodings are the companion's INFERENCE from the author's phrases; where a phrase reduces to a single bit that is stated in `note` and the learner's verdict will read `reduced` if its own `unmapped` says so.",
+  "tests": {
+    "statement": {
+      "phrase": "\"a statement\" : statement",
+      "interface": {"inputs": {"i_wf": "the candidate is a well-formed statement (decided by the parser, supplied as a bit)"}, "outputs": {"o_statement": "the predicate `statement` holds at t"}},
+      "steps": [{"i_wf": "T"}, {"i_wf": "F"}, {"i_wf": "T"}, {"i_wf": "F"}],
+      "expected": {"o_statement": ["T", "F", "T", "F"]},
+      "note": "Single-bit by construction: parse-hood lives in the parser (faculty F1). An identity spec is the correct answer and is `reduced`."
+    },
+    "defined_concepts": {
+      "phrase": "\"defined concepts\" : defined_concepts",
+      "interface": {"inputs": {"i_uses_term": "the thought uses a term at t", "i_term_defined": "that term is defined (interface or glossary)"}, "outputs": {"o_defined_concepts": "the predicate holds at t"}},
+      "steps": [{"i_uses_term": "T", "i_term_defined": "T"}, {"i_uses_term": "T", "i_term_defined": "F"}, {"i_uses_term": "F", "i_term_defined": "F"}, {"i_uses_term": "F", "i_term_defined": "T"}],
+      "expected": {"o_defined_concepts": ["T", "F", "T", "T"]},
+      "note": "Holds unless a used term is undefined."
+    },
+    "preserves_origin_trace": {
+      "phrase": "\"preserves origin trace\" : preserves_origin_trace",
+      "interface": {"inputs": {"i_claim": "the thought makes a claim at t", "i_cites_record": "that claim cites a ledger record"}, "outputs": {"o_preserves_origin_trace": "the predicate holds at t"}},
+      "steps": [{"i_claim": "T", "i_cites_record": "T"}, {"i_claim": "T", "i_cites_record": "F"}, {"i_claim": "F", "i_cites_record": "F"}, {"i_claim": "T", "i_cites_record": "T"}],
+      "expected": {"o_preserves_origin_trace": ["T", "F", "T", "T"]},
+      "note": "A claim without a record breaks the trace (TEMPLATE §2 F1–F4)."
+    },
+    "does_not_contradict_prior_reasoning": {
+      "phrase": "\"does not contradict prior reasoning unless explicitly amended\" : does_not_contradict_prior_reasoning",
+      "interface": {"inputs": {"i_contradicts_prior": "the thought contradicts accepted prior reasoning at t", "i_amended": "the contradiction is declared as an explicit amendment"}, "outputs": {"o_does_not_contradict_prior_reasoning": "the predicate holds at t"}},
+      "steps": [{"i_contradicts_prior": "F", "i_amended": "F"}, {"i_contradicts_prior": "T", "i_amended": "F"}, {"i_contradicts_prior": "T", "i_amended": "T"}, {"i_contradicts_prior": "F", "i_amended": "T"}],
+      "expected": {"o_does_not_contradict_prior_reasoning": ["T", "F", "T", "T"]},
+      "note": "The 'unless explicitly amended' clause is the whole content: contradiction is allowed only when declared."
+    },
+    "logically_consistent_with_upstream_definitions": {
+      "phrase": "\"logical consistency with declared upstream dependencies and definitions\" : logically_consistent_with_upstream_definitions",
+      "interface": {"inputs": {"i_requires_term": "the thought requires an upstream term at t", "i_provider_exists": "a provider for that term exists among accepted streams"}, "outputs": {"o_logically_consistent_with_upstream_definitions": "the predicate holds at t"}},
+      "steps": [{"i_requires_term": "T", "i_provider_exists": "T"}, {"i_requires_term": "T", "i_provider_exists": "F"}, {"i_requires_term": "F", "i_provider_exists": "F"}, {"i_requires_term": "T", "i_provider_exists": "T"}],
+      "expected": {"o_logically_consistent_with_upstream_definitions": ["T", "F", "T", "T"]},
+      "note": "The inventory's dangling `requires` list is exactly the F case."
+    },
+    "authored_by_agent": {
+      "phrase": "\"authored by agent\" : authored_by_agent",
+      "interface": {"inputs": {"i_author_declared": "the thought carries a declared author at t", "i_author_resolved": "the declared author resolves to a known agent (model id or authenticated person)"}, "outputs": {"o_authored_by_agent": "the predicate holds at t"}},
+      "steps": [{"i_author_declared": "T", "i_author_resolved": "T"}, {"i_author_declared": "T", "i_author_resolved": "F"}, {"i_author_declared": "F", "i_author_resolved": "F"}, {"i_author_declared": "F", "i_author_resolved": "T"}],
+      "expected": {"o_authored_by_agent": ["T", "F", "F", "F"]},
+      "note": "Declared and resolved (TEMPLATE §2 F7, F8): an alias that resolves to nothing is not authorship."
+    },
+    "has_identity_stream": {
+      "phrase": "\"has identity stream\" : has_identity_stream",
+      "interface": {"inputs": {"i_author_declared": "the thought carries a declared author at t", "i_identity_stream_exists": "an agents/seed/*.tau identity stream exists for that author"}, "outputs": {"o_has_identity_stream": "the predicate holds at t"}},
+      "steps": [{"i_author_declared": "T", "i_identity_stream_exists": "T"}, {"i_author_declared": "T", "i_identity_stream_exists": "F"}, {"i_author_declared": "F", "i_identity_stream_exists": "T"}, {"i_author_declared": "F", "i_identity_stream_exists": "F"}],
+      "expected": {"o_has_identity_stream": ["T", "F", "F", "F"]},
+      "note": "No author, no identity stream to have."
+    },
+    "evaluates_lineage": {
+      "phrase": "\"evaluates lineage\" : evaluates_lineage",
+      "interface": {"inputs": {"i_lineage_evaluated": "the thought's lineage (its amendment ancestry) was evaluated at t"}, "outputs": {"o_evaluates_lineage": "the predicate holds at t: lineage has been evaluated at t and at every earlier step"}},
+      "steps": [{"i_lineage_evaluated": "T"}, {"i_lineage_evaluated": "T"}, {"i_lineage_evaluated": "F"}, {"i_lineage_evaluated": "T"}],
+      "expected": {"o_evaluates_lineage": ["T", "T", "F", "F"]},
+      "note": "Reflexive integrity is cumulative: one skipped evaluation breaks the lineage for good (o[t] = i[t] & o[t-1], o[0] = i[0]). This is the companion's reading of 'evaluates lineage' as a standing obligation, not a per-step bit; a per-step spec fails step 4."
+    },
+    "checks_coherence": {
+      "phrase": "\"checks coherence\" : checks_coherence",
+      "interface": {"inputs": {"i_coherence_checked": "a coherence check ran on the thought at t", "i_coherent": "the check found no contradiction"}, "outputs": {"o_checks_coherence": "the predicate holds at t"}},
+      "steps": [{"i_coherence_checked": "T", "i_coherent": "T"}, {"i_coherence_checked": "T", "i_coherent": "F"}, {"i_coherence_checked": "F", "i_coherent": "T"}, {"i_coherence_checked": "F", "i_coherent": "F"}],
+      "expected": {"o_checks_coherence": ["T", "F", "F", "F"]},
+      "note": "An unchecked thought does not 'check coherence' even if it happens to be coherent."
+    },
+    "checks_amendment_status": {
+      "phrase": "\"checks amendment status\" : checks_amendment_status",
+      "interface": {"inputs": {"i_status_checked": "the thought's amendment status was checked at t", "i_status_current": "the status found is current (no pending amendment supersedes it)"}, "outputs": {"o_checks_amendment_status": "the predicate holds at t"}},
+      "steps": [{"i_status_checked": "T", "i_status_current": "T"}, {"i_status_checked": "T", "i_status_current": "F"}, {"i_status_checked": "F", "i_status_current": "T"}, {"i_status_checked": "T", "i_status_current": "T"}],
+      "expected": {"o_checks_amendment_status": ["T", "F", "F", "T"]},
+      "note": "Checked and current."
+    },
+    "declares_all_terms_in_interface": {
+      "phrase": "\"declares all terms in interface\" : declares_all_terms_in_interface",
+      "interface": {"inputs": {"i_term_used": "the thought uses a term in its body at t", "i_term_declared": "that term is in its interface (provides/requires) or the glossary"}, "outputs": {"o_declares_all_terms_in_interface": "the predicate holds at t"}},
+      "steps": [{"i_term_used": "T", "i_term_declared": "T"}, {"i_term_used": "T", "i_term_declared": "F"}, {"i_term_used": "F", "i_term_declared": "F"}, {"i_term_used": "F", "i_term_declared": "T"}],
+      "expected": {"o_declares_all_terms_in_interface": ["T", "F", "T", "T"]},
+      "note": "Same shape as defined_concepts, different scope: the thought's own interface, not the network glossary."
+    },
+    "does_not_leak_terms": {
+      "phrase": "\"does not leak terms\" : does_not_leak_terms",
+      "interface": {"inputs": {"i_term_from_outside": "the thought uses a term that belongs to another instance's object (the wall)", "i_term_used": "the thought uses any term at t"}, "outputs": {"o_does_not_leak_terms": "the predicate holds at t"}},
+      "steps": [{"i_term_from_outside": "F", "i_term_used": "T"}, {"i_term_from_outside": "T", "i_term_used": "T"}, {"i_term_from_outside": "F", "i_term_used": "F"}, {"i_term_from_outside": "T", "i_term_used": "F"}],
+      "expected": {"o_does_not_leak_terms": ["T", "F", "T", "T"]},
+      "note": "A leak is a used term from outside the wall (TEMPLATE §2 F17); step 4 has an outside term available but unused, so no leak."
+    }
+  }
+}

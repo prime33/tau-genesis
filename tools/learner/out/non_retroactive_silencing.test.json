@@ -1,0 +1,1 @@
+{"steps": [{"i_suppressed": "F", "i_by_emitter": "F"}, {"i_suppressed": "T", "i_by_emitter": "F"}, {"i_suppressed": "T", "i_by_emitter": "T"}, {"i_suppressed": "F", "i_by_emitter": "T"}], "expected": {"o_non_retroactive_silencing": ["T", "F", "T", "T"]}}

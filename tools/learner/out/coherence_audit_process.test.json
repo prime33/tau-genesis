@@ -1,0 +1,1 @@
+{"steps": [{"i_multiple_interpretations": "F", "i_reconciliation_initiated": "F"}, {"i_multiple_interpretations": "T", "i_reconciliation_initiated": "F"}, {"i_multiple_interpretations": "T", "i_reconciliation_initiated": "T"}, {"i_multiple_interpretations": "F", "i_reconciliation_initiated": "T"}], "expected": {"o_coherence_audit_process": ["T", "F", "T", "T"]}}

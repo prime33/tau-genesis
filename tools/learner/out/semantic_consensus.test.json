@@ -1,0 +1,1 @@
+{"steps": [{"i_streams_jointly_satisfiable": "T", "i_sufficient_to_enact": "T"}, {"i_streams_jointly_satisfiable": "T", "i_sufficient_to_enact": "F"}, {"i_streams_jointly_satisfiable": "F", "i_sufficient_to_enact": "T"}, {"i_streams_jointly_satisfiable": "F", "i_sufficient_to_enact": "F"}], "expected": {"o_semantic_consensus": ["T", "F", "F", "F"]}}

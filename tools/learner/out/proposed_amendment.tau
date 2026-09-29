@@ -1,0 +1,3 @@
+# proposed_amendment — verified by the oracle (attempt 72, 2026-09-29T14:46:26Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: constitution/update_process.tau
+i_clause_submitted : tau := in console. i_targets_versioned_stream : tau := in console. o_proposed_amendment : tau := out console. always (o_proposed_amendment[t] = i_clause_submitted[t] & i_targets_versioned_stream[t])

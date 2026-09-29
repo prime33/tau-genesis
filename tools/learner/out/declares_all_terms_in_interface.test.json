@@ -1,0 +1,1 @@
+{"steps": [{"i_term_used": "F", "i_term_declared": "F"}, {"i_term_used": "T", "i_term_declared": "T"}, {"i_term_used": "T", "i_term_declared": "F"}, {"i_term_used": "F", "i_term_declared": "T"}], "expected": {"o_declares_all_terms_in_interface": ["T", "T", "F", "T"]}}

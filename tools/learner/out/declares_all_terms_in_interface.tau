@@ -1,0 +1,3 @@
+# declares_all_terms_in_interface — verified by the oracle (attempt 61, 2026-09-29T13:05:20Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/core/valid_thought.tau, streams/glossary/core_phrases.tau
+i_term_used : tau := in console. i_term_declared : tau := in console. o_declares_all_terms_in_interface : tau := out console. always o_declares_all_terms_in_interface[t] = i_term_used[t]' | i_term_declared[t]

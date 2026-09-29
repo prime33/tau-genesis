@@ -1,0 +1,3 @@
+# consensus_threshold — verified by the oracle (attempt 73, 2026-09-29T14:47:10Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: constitution/update_process.tau, constitution/consensus_logic.tau
+i_threshold_defined : tau := in console. i_agreement_meets_level : tau := in console. o_consensus_threshold : tau := out console. always (o_consensus_threshold[t] = i_threshold_defined[t] & i_agreement_meets_level[t])

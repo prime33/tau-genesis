@@ -1,0 +1,1 @@
+{"steps": [{"i_coherence_checked": "T", "i_coherent": "T"}, {"i_coherence_checked": "T", "i_coherent": "F"}, {"i_coherence_checked": "F", "i_coherent": "T"}, {"i_coherence_checked": "F", "i_coherent": "F"}], "expected": {"o_checks_coherence": ["T", "F", "F", "F"]}}

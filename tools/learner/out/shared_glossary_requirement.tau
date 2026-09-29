@@ -1,0 +1,3 @@
+# shared_glossary_requirement — verified by the oracle (attempt 93, 2026-09-29T16:07:35Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/amendments/babel_antipattern_principle.tau, git:c55ce7c~1:amendments/amendment_003_babel_antipattern.tau
+i_new_term : tau := in console. i_in_glossary : tau := in console. i_mapped_to_existing : tau := in console. o_shared_glossary_requirement : tau := out console. always (o_shared_glossary_requirement[t] = i_new_term[t]' | i_in_glossary[t] | i_mapped_to_existing[t])

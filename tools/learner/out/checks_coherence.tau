@@ -1,0 +1,3 @@
+# checks_coherence — verified by the oracle (attempt 59, 2026-09-29T13:03:53Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/core/valid_thought.tau, streams/glossary/core_phrases.tau
+i_coherence_checked : tau := in console. i_coherent : tau := in console. o_checks_coherence : tau := out console. always (o_checks_coherence[t] = i_coherence_checked[t] & i_coherent[t]).

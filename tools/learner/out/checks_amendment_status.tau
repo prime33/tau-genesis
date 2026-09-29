@@ -1,0 +1,3 @@
+# checks_amendment_status — verified by the oracle (attempt 60, 2026-09-29T13:04:38Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/core/valid_thought.tau, streams/glossary/core_phrases.tau
+i_status_checked : tau := in console. i_status_current : tau := in console. o_checks_amendment_status : tau := out console. always o_checks_amendment_status[t] = i_status_checked[t] & i_status_current[t].

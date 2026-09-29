@@ -1,0 +1,1 @@
+{"steps": [{"i_conflict_found": "F", "i_conflict_resolved": "F"}, {"i_conflict_found": "T", "i_conflict_resolved": "F"}, {"i_conflict_found": "T", "i_conflict_resolved": "T"}, {"i_conflict_found": "F", "i_conflict_resolved": "T"}], "expected": {"o_contradiction_detection": ["F", "T", "F", "F"]}}

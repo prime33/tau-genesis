@@ -1,0 +1,1 @@
+{"steps": [{"i_status_checked": "T", "i_status_current": "T"}, {"i_status_checked": "T", "i_status_current": "F"}, {"i_status_checked": "F", "i_status_current": "T"}, {"i_status_checked": "F", "i_status_current": "F"}], "expected": {"o_checks_amendment_status": ["T", "F", "F", "F"]}}

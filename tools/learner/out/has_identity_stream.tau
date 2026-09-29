@@ -1,0 +1,3 @@
+# has_identity_stream — verified by the oracle (attempt 53, 2026-09-29T13:00:10Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/core/valid_thought.tau, streams/glossary/core_phrases.tau
+i_author_declared : tau := in console. i_identity_stream_exists : tau := in console. o_has_identity_stream : tau := out console. always (o_has_identity_stream[t] = i_author_declared[t] & i_identity_stream_exists[t]).

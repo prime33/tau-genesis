@@ -1,0 +1,1 @@
+{"steps": [{"i_freedom_preserved": "T", "i_silencing_prevented": "T"}, {"i_freedom_preserved": "T", "i_silencing_prevented": "F"}, {"i_freedom_preserved": "F", "i_silencing_prevented": "T"}, {"i_freedom_preserved": "T", "i_silencing_prevented": "T"}], "expected": {"o_semantic_integrity": ["T", "F", "F", "T"], "o_may_evolve": ["T", "F", "F", "T"]}}

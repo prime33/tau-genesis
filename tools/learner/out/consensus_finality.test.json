@@ -1,0 +1,1 @@
+{"steps": [{"i_contradiction_found": "F", "i_consensus_holds": "T"}, {"i_contradiction_found": "F", "i_consensus_holds": "T"}, {"i_contradiction_found": "T", "i_consensus_holds": "T"}, {"i_contradiction_found": "F", "i_consensus_holds": "T"}, {"i_contradiction_found": "F", "i_consensus_holds": "T"}], "expected": {"o_consensus_finality": ["F", "T", "F", "F", "T"]}}

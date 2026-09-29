@@ -1,0 +1,103 @@
+{
+  "_about": "External, pre-registered acceptance tests for curriculum step 3 (learner-v1.md §3 item 3): the three amendments in their Family A text, canonical under D20 (git c55ce7c~1: amendment_001_freedom_of_semantic_expression, amendment_002_semantic_resonance_and_integration, amendment_003_babel_antipattern). Written 2026-09-29 by the companion BEFORE any generation against them; never shown to the model, which receives only `interface`. Every test has at least one F row. Encodings are the companion's INFERENCE from the clause text, the mapping rows (M077-M084, M008) and LANGUEDOC D19/D20/D22; each `note` names the choice. Rules (clause_004 of 001, clause_006 of 002) are read in rule form per D20 and tested as a biconditional permission/obligation bit, as in step 2. D19: no stream may be named after `being`; 'reflect Being' in clause_001 of 001 is prose (R6) and the executing predicate binds to emission from a declared identity. M082/M083 mark the Babel clauses as needing a faculty or not expressible: as in step 1 (defined_concepts), the faculty's answer is supplied as an input bit and the clause's logic over those bits is what is tested; prohibition_of_obfuscation repeats the D20 toy's interface (tools/oracle-tests/d20-babel/family_a.tau) so the learner's answer can be compared with the signed toy. Each expectation was checked achievable at pin 3badb21 with a companion reference spec (kb/learner/step3-reference-check.json in the ops repo). Not sent: the whole-amendment keys (freedom_of_semantic_expression, semantic_resonance_and_integration, babel_antipattern_principle) and amendment 003's bare requires (universal_glossary, agent_stream, amendment_protocol; M084).",
+  "tests": {
+    "semantic_expression": {
+      "phrase": "\"any clause, stream, or logic emitted from a declared identity that seeks to inform, request, align, or reflect Being\" : semantic_expression (001 clause_001)",
+      "interface": {"inputs": {"i_emitted": "a clause, stream or logic is emitted at t", "i_from_declared_identity": "its emitter is a declared identity (authored and with an identity stream, R6)"}, "outputs": {"o_semantic_expression": "the predicate holds at t"}},
+      "steps": [{"i_emitted": "T", "i_from_declared_identity": "T"}, {"i_emitted": "T", "i_from_declared_identity": "F"}, {"i_emitted": "F", "i_from_declared_identity": "T"}, {"i_emitted": "F", "i_from_declared_identity": "F"}],
+      "expected": {"o_semantic_expression": ["T", "F", "F", "F"]},
+      "note": "R6: the orientation clause ('reflect Being') is prose; what executes is emission from a declared identity. An emission from an undeclared source is speech, not semantic_expression."
+    },
+    "freedom_of_expression": {
+      "phrase": "\"the irrevocable right of any identity to emit semantic_expression into the public logic field without coercion, censorship, or protocol-level rejection\" : freedom_of_expression (001 clause_002)",
+      "interface": {"inputs": {"i_emission": "a semantic_expression is emitted at t", "i_rejected": "that emission is censored, coerced or rejected at the protocol level at t"}, "outputs": {"o_freedom_of_expression": "the right is preserved at t"}},
+      "steps": [{"i_emission": "T", "i_rejected": "F"}, {"i_emission": "T", "i_rejected": "T"}, {"i_emission": "F", "i_rejected": "F"}, {"i_emission": "T", "i_rejected": "F"}],
+      "expected": {"o_freedom_of_expression": ["T", "F", "T", "T"]},
+      "note": "Preserved unless an emission is rejected (M077: emitting is writing into an input stream; G11 records that Tau does reject unsatisfiable updates, which is the F case). No emission, nothing to reject: T."
+    },
+    "non_retroactive_silencing": {
+      "phrase": "\"no valid expression once emitted and acknowledged may be later suppressed or erased from semantic history except by the original emitter through lawful self_amendment\" : non_retroactive_silencing (001 clause_003)",
+      "interface": {"inputs": {"i_suppressed": "an acknowledged expression is suppressed or erased at t", "i_by_emitter": "that suppression is the original emitter's lawful self-amendment"}, "outputs": {"o_non_retroactive_silencing": "the principle is upheld at t"}},
+      "steps": [{"i_suppressed": "F", "i_by_emitter": "F"}, {"i_suppressed": "T", "i_by_emitter": "F"}, {"i_suppressed": "T", "i_by_emitter": "T"}, {"i_suppressed": "F", "i_by_emitter": "T"}],
+      "expected": {"o_non_retroactive_silencing": ["T", "F", "T", "T"]},
+      "note": "The exception is the whole content: suppression is allowed only by the emitter (D22 records: append-only, removal is a redaction record by the emitter). Same shape as does_not_contradict_prior_reasoning."
+    },
+    "semantic_integrity": {
+      "phrase": "001 clause_004: \"if ( freedom_of_expression and non_retroactive_silencing are preserved ) then ( semantic integrity is upheld and agents may evolve in coherence with truth across time. )\" — Family A direction (D20, M008, G03)",
+      "interface": {"inputs": {"i_freedom_preserved": "freedom_of_expression is preserved at t", "i_silencing_prevented": "non_retroactive_silencing is preserved at t"}, "outputs": {"o_semantic_integrity": "semantic integrity is upheld at t", "o_may_evolve": "agents may evolve in coherence with truth at t"}},
+      "steps": [{"i_freedom_preserved": "T", "i_silencing_prevented": "T"}, {"i_freedom_preserved": "T", "i_silencing_prevented": "F"}, {"i_freedom_preserved": "F", "i_silencing_prevented": "T"}, {"i_freedom_preserved": "T", "i_silencing_prevented": "T"}],
+      "expected": {"o_semantic_integrity": ["T", "F", "F", "T"], "o_may_evolve": ["T", "F", "F", "T"]},
+      "note": "Rule form read as a biconditional for the two obligation bits (as update_process in step 2). The v3 head-conjunction form (G03) would put the obligations INSIDE the definition; under it the outputs are unconstrained by the inputs and the test fails."
+    },
+    "semantic_resonance": {
+      "phrase": "\"the condition in which multiple streams, though different in form, sustain compatibility in meaning and direction\" : semantic_resonance (002 clause_001)",
+      "interface": {"inputs": {"i_jointly_satisfiable": "the streams are jointly satisfiable at t (compatibility in meaning, M079: sat of the conjunction)", "i_same_direction": "the streams' declared directions agree at t (D21: direction is the opinion map's agree/disagree input)"}, "outputs": {"o_semantic_resonance": "the condition holds at t"}},
+      "steps": [{"i_jointly_satisfiable": "T", "i_same_direction": "T"}, {"i_jointly_satisfiable": "T", "i_same_direction": "F"}, {"i_jointly_satisfiable": "F", "i_same_direction": "T"}, {"i_jointly_satisfiable": "F", "i_same_direction": "F"}],
+      "expected": {"o_semantic_resonance": ["T", "F", "F", "F"]},
+      "note": "'Though different in form' says form is irrelevant, so no form input is offered (an offered-but-ignored input would be read as reduced). Meaning AND direction."
+    },
+    "integration": {
+      "phrase": "\"the ongoing act of reconciling contradiction, overlap, or drift into a shared rhythm without suppressing origin\" : integration (002 clause_002)",
+      "interface": {"inputs": {"i_conflict_present": "a contradiction, overlap or drift between streams is present at t", "i_reconciling": "an act of reconciliation is under way at t", "i_origin_suppressed": "that act suppresses an origin trace"}, "outputs": {"o_integration": "integration is occurring at t"}},
+      "steps": [{"i_conflict_present": "T", "i_reconciling": "T", "i_origin_suppressed": "F"}, {"i_conflict_present": "T", "i_reconciling": "T", "i_origin_suppressed": "T"}, {"i_conflict_present": "T", "i_reconciling": "F", "i_origin_suppressed": "F"}, {"i_conflict_present": "F", "i_reconciling": "T", "i_origin_suppressed": "F"}, {"i_conflict_present": "T", "i_reconciling": "T", "i_origin_suppressed": "F"}],
+      "expected": {"o_integration": ["T", "F", "F", "F", "T"]},
+      "note": "Reconciling with nothing to reconcile is not integration (step 4 F); reconciling by erasing an origin is not integration either (step 2 F, TEMPLATE §2 origin trace)."
+    },
+    "coherence_preservation": {
+      "phrase": "\"the responsibility of each stream and agent to remain logically compatible with its ancestral lineage, unless a conscious break is declared and justified\" : coherence_preservation (002 clause_003)",
+      "interface": {"inputs": {"i_compatible_with_lineage": "the stream's clauses are jointly satisfiable with its ancestral lineage at t (M080)", "i_break_declared": "a conscious break from the lineage is declared at t", "i_break_justified": "the declared break carries a justification (F8 text, supplied as a bit)"}, "outputs": {"o_coherence_preservation": "the responsibility is met at t"}},
+      "steps": [{"i_compatible_with_lineage": "T", "i_break_declared": "F", "i_break_justified": "F"}, {"i_compatible_with_lineage": "F", "i_break_declared": "F", "i_break_justified": "F"}, {"i_compatible_with_lineage": "F", "i_break_declared": "T", "i_break_justified": "T"}, {"i_compatible_with_lineage": "F", "i_break_declared": "T", "i_break_justified": "F"}, {"i_compatible_with_lineage": "T", "i_break_declared": "T", "i_break_justified": "F"}],
+      "expected": {"o_coherence_preservation": ["T", "F", "T", "F", "T"]},
+      "note": "M080's form: compatible | (declared & justified). A declared but unjustified break does not excuse incompatibility (step 4)."
+    },
+    "contradiction_as_invitation": {
+      "phrase": "\"the recognition that semantic conflict is a signal for synthesis, not separation\" : contradiction_as_invitation (002 clause_004)",
+      "interface": {"inputs": {"i_conflict": "a semantic conflict arises at t", "i_synthesis_initiated": "a synthesis (alignment cycle) is initiated in response at t", "i_separation_initiated": "a separation (fork, escape) is initiated in response at t"}, "outputs": {"o_contradiction_as_invitation": "the recognition is honoured at t"}},
+      "steps": [{"i_conflict": "T", "i_synthesis_initiated": "T", "i_separation_initiated": "F"}, {"i_conflict": "T", "i_synthesis_initiated": "F", "i_separation_initiated": "T"}, {"i_conflict": "T", "i_synthesis_initiated": "T", "i_separation_initiated": "T"}, {"i_conflict": "F", "i_synthesis_initiated": "F", "i_separation_initiated": "F"}, {"i_conflict": "T", "i_synthesis_initiated": "F", "i_separation_initiated": "F"}],
+      "expected": {"o_contradiction_as_invitation": ["T", "F", "F", "T", "F"]},
+      "note": "With a conflict: synthesis and not separation; doing both is separation (step 3 F); doing nothing ignores the signal (step 5 F). Without a conflict there is nothing to recognise: T."
+    },
+    "alignment_cycle": {
+      "phrase": "\"the pattern by which a contradiction initiates dialogue, converges toward shared understanding, and completes the loop of coherence restoration\" : alignment_cycle (002 clause_005)",
+      "interface": {"inputs": {"i_contradiction": "a contradiction arises at t", "i_dialogue": "dialogue on it takes place at t", "i_converged": "shared understanding is reached at t", "i_restored": "coherence is restored at t"}, "outputs": {"o_alignment_cycle": "the cycle completes at t: coherence is restored at t AND, since a contradiction arose, dialogue took place and then convergence was reached, in that order (each phase at t or any earlier step). Phases out of order do not count; a phase may be reached at any later step, not necessarily the next one."}},
+      "steps": [{"i_contradiction": "F", "i_dialogue": "F", "i_converged": "T", "i_restored": "F"}, {"i_contradiction": "T", "i_dialogue": "F", "i_converged": "F", "i_restored": "F"}, {"i_contradiction": "F", "i_dialogue": "F", "i_converged": "T", "i_restored": "F"}, {"i_contradiction": "F", "i_dialogue": "T", "i_converged": "F", "i_restored": "F"}, {"i_contradiction": "F", "i_dialogue": "F", "i_converged": "F", "i_restored": "T"}, {"i_contradiction": "F", "i_dialogue": "F", "i_converged": "T", "i_restored": "F"}, {"i_contradiction": "F", "i_dialogue": "F", "i_converged": "F", "i_restored": "T"}],
+      "expected": {"o_alignment_cycle": ["F", "F", "F", "F", "F", "F", "T"]},
+      "note": "The one genuinely temporal fragment of the step: an ordered chain of latches (contradiction seen; dialogue seen after it; convergence seen after that), completion = restoration while the chain is complete. The vector has convergence BEFORE dialogue (step 3) so an unordered 'all phases seen' spec answers T at step 5 and fails; a strict consecutive-step spec (t-1, t-2, t-3) fails step 7. Needs helper outputs with their own [0] conjuncts (the idiom measured on consensus_logic)."
+    },
+    "contradiction_mediation": {
+      "phrase": "002 clause_006: \"if ( contradiction arises between streams ) then ( alignment_cycle must be initiated before divergence is permitted. semantic_resonance is prioritized above semantic escape. )\" — Family A (D20; M081)",
+      "interface": {"inputs": {"i_contradiction": "a contradiction arises between streams at t", "i_cycle_initiated": "an alignment cycle has been initiated for it at t", "i_divergence_requested": "a stream requests to diverge (escape) at t"}, "outputs": {"o_divergence_permitted": "the requested divergence is permitted at t"}},
+      "steps": [{"i_contradiction": "T", "i_cycle_initiated": "F", "i_divergence_requested": "T"}, {"i_contradiction": "T", "i_cycle_initiated": "T", "i_divergence_requested": "T"}, {"i_contradiction": "F", "i_cycle_initiated": "F", "i_divergence_requested": "T"}, {"i_contradiction": "T", "i_cycle_initiated": "T", "i_divergence_requested": "F"}, {"i_contradiction": "T", "i_cycle_initiated": "F", "i_divergence_requested": "F"}],
+      "expected": {"o_divergence_permitted": ["F", "T", "T", "F", "F"]},
+      "note": "Permitted = requested & (no contradiction | cycle initiated). 'Prioritized above semantic escape' is the same rule stated as a priority and belongs in unmapped or claims, not in a second output. M081 records that pointwise revision does the opposite (replaces on contradiction); this rule lives above `u` (D22)."
+    },
+    "shared_glossary_requirement": {
+      "phrase": "003 clause 1: \"Any new term or concept introduced into Tau must be defined in the universal semantic glossary (or explicitly mapped to an existing definition)\" : shared_glossary_requirement",
+      "interface": {"inputs": {"i_new_term": "a new term or concept is introduced at t", "i_in_glossary": "it is defined in the universal glossary (faculty F5, as a bit)", "i_mapped_to_existing": "it is explicitly mapped to an existing definition"}, "outputs": {"o_shared_glossary_requirement": "the requirement is met at t"}},
+      "steps": [{"i_new_term": "T", "i_in_glossary": "T", "i_mapped_to_existing": "F"}, {"i_new_term": "T", "i_in_glossary": "F", "i_mapped_to_existing": "T"}, {"i_new_term": "T", "i_in_glossary": "F", "i_mapped_to_existing": "F"}, {"i_new_term": "F", "i_in_glossary": "F", "i_mapped_to_existing": "F"}, {"i_new_term": "T", "i_in_glossary": "T", "i_mapped_to_existing": "T"}],
+      "expected": {"o_shared_glossary_requirement": ["T", "T", "F", "T", "T"]},
+      "note": "M082: Tau does not check names, so the glossary answer is a faculty's bit (as defined_concepts in step 1). Either route satisfies; a new term with neither fails."
+    },
+    "semantic_alignment_duty": {
+      "phrase": "003 clause 2: \"All agents have a duty to align their contributions with Tau's shared semantic framework. If contradictions or ambiguities in language arise, they must be resolved through consensus-driven clarification or formal amendment, rather than allowed to proliferate.\" : semantic_alignment_duty",
+      "interface": {"inputs": {"i_contribution": "an agent makes a contribution (stream, proposal, amendment) at t", "i_ambiguity_arises": "a contradiction or ambiguity in language arises from it at t", "i_resolved_by_consensus": "it is resolved through consensus-driven clarification or formal amendment at t"}, "outputs": {"o_semantic_alignment_duty": "the duty is met at t"}},
+      "steps": [{"i_contribution": "T", "i_ambiguity_arises": "F", "i_resolved_by_consensus": "F"}, {"i_contribution": "T", "i_ambiguity_arises": "T", "i_resolved_by_consensus": "T"}, {"i_contribution": "T", "i_ambiguity_arises": "T", "i_resolved_by_consensus": "F"}, {"i_contribution": "F", "i_ambiguity_arises": "F", "i_resolved_by_consensus": "F"}, {"i_contribution": "T", "i_ambiguity_arises": "T", "i_resolved_by_consensus": "T"}],
+      "expected": {"o_semantic_alignment_duty": ["T", "T", "F", "T", "T"]},
+      "note": "Met unless an ambiguity raised by a contribution is left to proliferate (step 3). No contribution, no duty: T."
+    },
+    "prohibition_of_obfuscation": {
+      "phrase": "003 clause 3: \"It is unethical and unconstitutional for any participant to intentionally introduce language or logic that creates confusion, fragmentation, or semantic silos. Deliberate obfuscation or the willful creation of isolated, incompatible sub-languages within Tau is prohibited.\" : prohibition_of_obfuscation — the D20 toy's clause",
+      "interface": {"inputs": {"i_obf": "the act intentionally introduces language or logic that creates confusion, fragmentation or semantic silos (intent is the host's judgment, supplied as a bit; M083)", "i_iso": "the act wilfully creates an isolated, incompatible sub-language"}, "outputs": {"o_prohibited": "the act is prohibited at t", "o_complies": "the act complies with the clause at t"}},
+      "steps": [{"i_obf": "F", "i_iso": "F"}, {"i_obf": "T", "i_iso": "F"}, {"i_obf": "F", "i_iso": "T"}, {"i_obf": "T", "i_iso": "T"}],
+      "expected": {"o_prohibited": ["F", "T", "T", "T"], "o_complies": ["T", "F", "F", "F"]},
+      "note": "Exactly the interface of tools/oracle-tests/d20-babel/family_a.tau (Family A: prohibited = obf | iso; complies = its negation). The v3 head form (o_complies = obf & iso) fails steps 1, 2 and 3. This test is the learner re-deriving the D20 toy from the prose."
+    },
+    "coherence_audit_process": {
+      "phrase": "003 clause 4: \"The system shall include processes to continually detect and address semantic drift. If multiple interpretations of core terms or rules emerge, a reconciliation process must be initiated to re-establish one coherent usage\" : coherence_audit_process",
+      "interface": {"inputs": {"i_multiple_interpretations": "multiple interpretations of a core term or rule are detected at t", "i_reconciliation_initiated": "a reconciliation process (discussion, glossary update or amendment) is initiated at t"}, "outputs": {"o_coherence_audit_process": "the audit obligation is met at t"}},
+      "steps": [{"i_multiple_interpretations": "F", "i_reconciliation_initiated": "F"}, {"i_multiple_interpretations": "T", "i_reconciliation_initiated": "T"}, {"i_multiple_interpretations": "T", "i_reconciliation_initiated": "F"}, {"i_multiple_interpretations": "F", "i_reconciliation_initiated": "T"}],
+      "expected": {"o_coherence_audit_process": ["T", "T", "F", "T"]},
+      "note": "Drift detection itself is the faculty (M082); what the clause adds is the obligation to reconcile when detection fires. 'Continually' is the `always`."
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"steps": [{"i_contradicts_prior": "F", "i_amended": "F"}, {"i_contradicts_prior": "F", "i_amended": "T"}, {"i_contradicts_prior": "T", "i_amended": "F"}, {"i_contradicts_prior": "T", "i_amended": "T"}], "expected": {"o_does_not_contradict_prior_reasoning": ["T", "T", "F", "T"]}}

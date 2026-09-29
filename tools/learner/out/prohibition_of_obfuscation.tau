@@ -1,0 +1,3 @@
+# prohibition_of_obfuscation — verified by the oracle (attempt 95, 2026-09-29T16:09:28Z, tau-lang 3badb21, model anthropic-claude-opus-5)
+# Source fragment: streams/amendments/babel_antipattern_principle.tau, git:c55ce7c~1:amendments/amendment_003_babel_antipattern.tau
+i_obf : tau := in console. i_iso : tau := in console. o_prohibited : tau := out console. o_complies : tau := out console. always (o_prohibited[t] = (i_obf[t] | i_iso[t]) && o_complies[t] = (i_obf[t] | i_iso[t])').
