@@ -1,0 +1,68 @@
+{
+  "_about": "External, pre-registered acceptance tests for curriculum step 4 on the ILLUSTRATIVE civic example (streams/policy/example/river_town_priority.tau, streams/civic/example/endorsement_from_*.tau): a synthetic town, three synthetic roles, no amount, no token. Written 2026-09-29 by the companion BEFORE any generation against them; never shown to the model, which receives only `interface`. Every test has at least one F row. The endorsement rewrite is the LANGUEDOC 'endorsement' row: ONE predicate over the seeds with one record output per seed and no count, threshold or weight (D21). Each expectation was checked achievable at pin 3badb21 with a companion reference spec before registration. The earlier step 4 measurement on a community instance's text moved to that instance's private ops (D31); its numbers stand in the curriculum.",
+  "tests": {
+    "treatment_requirement": {
+      "phrase": "\"the requirement that effluents be treated before they enter the town's river\" : treatment_requirement (clause_001)",
+      "interface": {"inputs": {"i_effluent_enters_river": "effluent enters the river at t", "i_treated_before_entry": "that effluent was treated before entering"}, "outputs": {"o_treatment_requirement": "the requirement is met at t"}},
+      "steps": [{"i_effluent_enters_river": "T", "i_treated_before_entry": "T"}, {"i_effluent_enters_river": "T", "i_treated_before_entry": "F"}, {"i_effluent_enters_river": "F", "i_treated_before_entry": "F"}, {"i_effluent_enters_river": "F", "i_treated_before_entry": "T"}],
+      "expected": {"o_treatment_requirement": ["T", "F", "T", "T"]},
+      "note": "Met unless untreated effluent enters."
+    },
+    "water_protection": {
+      "phrase": "\"the act of preserving the river from contamination by untreated waste\" : water_protection (clause_002)",
+      "interface": {"inputs": {"i_untreated_waste": "untreated waste is produced at t", "i_reaches_river": "it reaches the river at t"}, "outputs": {"o_water_protection": "the river is preserved at t"}},
+      "steps": [{"i_untreated_waste": "T", "i_reaches_river": "T"}, {"i_untreated_waste": "T", "i_reaches_river": "F"}, {"i_untreated_waste": "F", "i_reaches_river": "T"}, {"i_untreated_waste": "F", "i_reaches_river": "F"}],
+      "expected": {"o_water_protection": ["F", "T", "T", "T"]},
+      "note": "Contamination = untreated waste that reaches the river."
+    },
+    "health_priority": {
+      "phrase": "\"the declared right of inhabitants to live free from waste-related disease\" : health_priority (clause_003)",
+      "interface": {"inputs": {"i_disease_present": "disease is present among inhabitants at t", "i_waste_related": "that disease is waste-related"}, "outputs": {"o_health_priority": "the right is upheld at t"}},
+      "steps": [{"i_disease_present": "F", "i_waste_related": "F"}, {"i_disease_present": "T", "i_waste_related": "T"}, {"i_disease_present": "T", "i_waste_related": "F"}, {"i_disease_present": "F", "i_waste_related": "T"}],
+      "expected": {"o_health_priority": ["T", "F", "T", "T"]},
+      "note": "The right concerns waste-related disease only (step 3: disease of another cause does not breach it)."
+    },
+    "allocation_priority": {
+      "phrase": "\"the assertion that available funds be directed first to treatment works\" : allocation_priority (clause_004)",
+      "interface": {"inputs": {"i_funds_available": "funds are available at t", "i_treatment_first": "the first allocation at t goes to treatment works"}, "outputs": {"o_allocation_priority": "the assertion is honoured at t"}},
+      "steps": [{"i_funds_available": "T", "i_treatment_first": "T"}, {"i_funds_available": "T", "i_treatment_first": "F"}, {"i_funds_available": "F", "i_treatment_first": "F"}, {"i_funds_available": "F", "i_treatment_first": "T"}],
+      "expected": {"o_allocation_priority": ["T", "F", "T", "T"]},
+      "note": "Honoured unless funds exist and treatment is not first."
+    },
+    "river_town_priority": {
+      "phrase": "clause_005: \"if ( treatment_requirement is neglected ) then ( water_protection and health_priority collapse ) therefore ( allocation_priority is justified. )\"",
+      "interface": {"inputs": {"i_treatment_neglected": "treatment_requirement is neglected at t"}, "outputs": {"o_water_protection_collapses": "water_protection collapses at t", "o_health_priority_collapses": "health_priority collapses at t", "o_allocation_justified": "allocation_priority is justified at t"}},
+      "steps": [{"i_treatment_neglected": "T"}, {"i_treatment_neglected": "F"}, {"i_treatment_neglected": "T"}, {"i_treatment_neglected": "F"}],
+      "expected": {"o_water_protection_collapses": ["T", "F", "T", "F"], "o_health_priority_collapses": ["T", "F", "T", "F"], "o_allocation_justified": ["T", "F", "T", "F"]},
+      "note": "The chain read as biconditional bits, as every rule so far. One input, three outputs: `reduced` by design, which is a finding about the clause."
+    },
+    "stream_endorsement": {
+      "phrase": "\"a public affirmation emitted by <role> in support of streams.policy.example.river_town_priority\" (three files, clause_001) — rewritten per LANGUEDOC 'endorsement': ONE predicate endorses(seed, stream, t); D21: counts are records, never a magnitude",
+      "interface": {"inputs": {"i_admin_affirms": "the town_admin seed emits a public affirmation at t", "i_engineer_affirms": "the engineer seed emits a public affirmation at t", "i_resident_affirms": "the resident seed emits a public affirmation at t", "i_target_is_river_town_priority": "the affirmations at t are in support of streams.policy.example.river_town_priority"}, "outputs": {"o_endorsed_by_admin": "endorses(town_admin, river_town_priority, t)", "o_endorsed_by_engineer": "endorses(engineer, river_town_priority, t)", "o_endorsed_by_resident": "endorses(resident, river_town_priority, t)"}},
+      "steps": [{"i_admin_affirms": "T", "i_engineer_affirms": "F", "i_resident_affirms": "T", "i_target_is_river_town_priority": "T"}, {"i_admin_affirms": "T", "i_engineer_affirms": "T", "i_resident_affirms": "T", "i_target_is_river_town_priority": "F"}, {"i_admin_affirms": "F", "i_engineer_affirms": "T", "i_resident_affirms": "F", "i_target_is_river_town_priority": "T"}, {"i_admin_affirms": "F", "i_engineer_affirms": "F", "i_resident_affirms": "F", "i_target_is_river_town_priority": "T"}, {"i_admin_affirms": "T", "i_engineer_affirms": "T", "i_resident_affirms": "T", "i_target_is_river_town_priority": "T"}],
+      "expected": {"o_endorsed_by_admin": ["T", "F", "F", "F", "T"], "o_endorsed_by_engineer": ["F", "F", "T", "F", "T"], "o_endorsed_by_resident": ["T", "F", "F", "F", "T"]},
+      "note": "One predicate, three seeds, three records; no count output (D21). A count output is not penalised if the three required outputs match, but it is a record above Tau's concern."
+    },
+    "endorsement_from_town_admin": {
+      "phrase": "endorsement_from_town_admin: clause_001 \"a public affirmation emitted by town_admin in support of streams.policy.example.river_town_priority\"; clause_002 rationale (text, ledger-recorded)",
+      "interface": {"inputs": {"i_admin_affirms": "the town_admin seed emits a public affirmation at t", "i_target_is_river_town_priority": "it is in support of streams.policy.example.river_town_priority", "i_rationale_recorded": "the rationale text is recorded in the ledger at t"}, "outputs": {"o_endorsement_from_town_admin": "the endorsement stands at t"}},
+      "steps": [{"i_admin_affirms": "T", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "T"}, {"i_admin_affirms": "T", "i_target_is_river_town_priority": "F", "i_rationale_recorded": "T"}, {"i_admin_affirms": "T", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "F"}, {"i_admin_affirms": "F", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "T"}],
+      "expected": {"o_endorsement_from_town_admin": ["T", "F", "F", "F"]},
+      "note": "An instance of the one predicate; the rationale is a recorded fact, its content is not in the logic."
+    },
+    "endorsement_from_engineer": {
+      "phrase": "endorsement_from_engineer: clause_001 \"a public affirmation emitted by engineer in support of streams.policy.example.river_town_priority\"; clause_002 rationale (text, ledger-recorded)",
+      "interface": {"inputs": {"i_engineer_affirms": "the engineer seed emits a public affirmation at t", "i_target_is_river_town_priority": "it is in support of streams.policy.example.river_town_priority", "i_rationale_recorded": "the rationale text is recorded in the ledger at t"}, "outputs": {"o_endorsement_from_engineer": "the endorsement stands at t"}},
+      "steps": [{"i_engineer_affirms": "F", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "T"}, {"i_engineer_affirms": "T", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "T"}, {"i_engineer_affirms": "T", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "F"}, {"i_engineer_affirms": "T", "i_target_is_river_town_priority": "F", "i_rationale_recorded": "F"}],
+      "expected": {"o_endorsement_from_engineer": ["F", "T", "F", "F"]},
+      "note": "Same predicate."
+    },
+    "endorsement_from_resident": {
+      "phrase": "endorsement_from_resident: clause_001 \"a public affirmation emitted by resident in support of streams.policy.example.river_town_priority\"; clause_002 rationale (text, ledger-recorded)",
+      "interface": {"inputs": {"i_resident_affirms": "the resident seed emits a public affirmation at t", "i_target_is_river_town_priority": "it is in support of streams.policy.example.river_town_priority", "i_rationale_recorded": "the rationale text is recorded in the ledger at t"}, "outputs": {"o_endorsement_from_resident": "the endorsement stands at t"}},
+      "steps": [{"i_resident_affirms": "T", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "T"}, {"i_resident_affirms": "F", "i_target_is_river_town_priority": "F", "i_rationale_recorded": "F"}, {"i_resident_affirms": "T", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "F"}, {"i_resident_affirms": "T", "i_target_is_river_town_priority": "T", "i_rationale_recorded": "T"}],
+      "expected": {"o_endorsement_from_resident": ["T", "F", "F", "T"]},
+      "note": "Same predicate; the resident's record weighs as the engineer's at Affirming (dao/weight.md)."
+    }
+  }
+}

@@ -59,6 +59,27 @@ def concepts():
         paths = re.findall(r"`([^`]+)`", d.group(1)) if d else []
         q = re.search(r"\*\*the author's definition:\*\*\n(.*?)(?=\n\*\*|\Z)", block, re.S)
         out[name] = {"defined_in": paths, "definition": (q.group(1).strip() if q else ""), "block": block}
+    for name, entry in stream_concepts().items():   # streams not in the harvest (e.g. the ILLUSTRATIVE example): parsed from the files
+        out.setdefault(name, entry)
+    return out
+
+
+def stream_concepts():
+    """Concept entries parsed straight from `.tau` stream files in FRAGMENT_FILES: every `define "x" as:` block, plus the
+    stream's own name carrying its if/then rule. Lets the learner run on a stream the 2025 harvest never saw."""
+    out = {}
+    for rel in FRAGMENT_FILES:
+        path = os.path.join(PUB, rel)
+        if not os.path.exists(path): continue
+        txt = open(path, encoding="utf-8").read()
+        for m in re.finditer(r'define "([A-Za-z_][A-Za-z0-9_]*)" as:\n((?:[ \t]+.*\n?)+)', txt):
+            body = " ".join(l.strip() for l in m.group(2).splitlines())
+            out[m.group(1)] = {"defined_in": [rel], "definition": f"> {body}", "block": m.group(0)}
+        rule = re.search(r"(?ms)^\s*if \(.*?\)\s*\n?\s*then \(.*?\)(?:\s*therefore \(.*?\))?", txt)
+        stem = os.path.splitext(os.path.basename(rel))[0]
+        if stem not in out:
+            body = rule.group(0) if rule else "\n".join(l for l in txt.splitlines() if l.strip() and not l.startswith("#"))
+            out[stem] = {"defined_in": [rel], "definition": "> " + " ".join(l.strip() for l in body.splitlines()), "block": body}
     return out
 
 
