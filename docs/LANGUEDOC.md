@@ -1,0 +1,35 @@
+# LANGUEDOC — the shared vocabulary (draft 1, 2026-09-27)
+
+Brief §3 step 4: after the Phase 2 report, the author and the companion converge on one vocabulary that both the proposal and the Tau side use. Amendment 6: start it from the proposal's own conflicts, not from IDNI's glossary. Draft 1 folds Amendment 8 (D19–D23): the five rows below are decided; the rewrites in §2 are proposals awaiting the author's signature. Undecided rows keep their options.
+
+| Term | Problem today | Options | Status |
+|---|---|---|---|
+| **Being** | Used as the thing everything aligns with; never defined (`docs/proposal/open-terms.md` §B). | **D19:** a constitutional primitive, not a Tau term. Stays in prose in `autopoietic_logos` as the orientation of the room. `being` and `alignment_with_being` are reserved-forbidden identifiers in any emitted spec (F5). Executing clauses that compare it are rewritten in measurable terms or retired (§2). | **decided D19** |
+| **stream** | File / clause head / version sequence (`concepts.md`, M002). | Three words: *specification* (file), *predicate* (clause head), *history* (version sequence). | open |
+| **identity** | Generic in constitution, self-referential in each seed (M003). | *identity* = the type; *seed* = an instance with presence (A5). | open |
+| **seed** | A5 term: a stakeholder with presence, in time. | Adopt as the instance word for identities, including natural seeds. | proposed |
+| **endorsement** | Five definitions (M004). | One predicate: endorses(seed, stream, rationale, t). | proposed |
+| **amendment** | Family-A text vs v3 rewrite differ in logical direction (M008). | **D20:** Family A is canonical (rule form: if the antecedents are preserved then the obligation holds). v3 and `.tml` stay in history as a known-wrong translation; F1 toy runs both before the author signs the restoration. | **decided D20** |
+| **weight / direction / next state** | A5 vocabulary; precursors in `amendment_quorum`, `value_distribution_criteria`. | **D21:** weight lives above Tau (F7); the opinion map's agree/disagree relation is the *direction* input; endorsement counts are records, never a magnitude. | **decided D21** |
+| **room** | A3 term. | Keep; the the example town streams are its constitution. | proposed |
+| **Affirming / Negating / Reconciling** | §6 design terms. | Keep as force names; never as agent names. | proposed |
+| **record / ledger / candidate / minority report** | Template terms (`dao/TEMPLATE.md`). | Keep. | proposed |
+| **execute / emit / `::` / `=`** | Notation never defined (open-terms §C). | the author says what each means or they are dropped in the migration. | open — the author |
+| **silencing (non-retroactive)** | `freedom_of_semantic_expression` / `contradiction_mediation`: what a revision may not do to prior speech (G11). | **D22:** split by object. *Records*: absolute, append-only; removal is a redaction record. *Clauses*: never silent, not undroppable; dropping another seed's accepted clause emits a minority-report entry and gives the emitter standing to force a re-hearing. Enforced above `u`; nothing reaches `u` unsigned. | **decided D22** |
+| **TML / `.tml` / transcompiler** | The proposal's stated target; dormant since 2023 (G01). | **D23:** retired. Files move to history, never deleted; `kb/HISTORY.md` is the migration record; F2 targets Tau v0.7 at the pinned commit only. | **decided D23** |
+
+## 2. Rewrites under D19 — proposals for the author's signature
+
+Rule: every clause that must *execute* and today compares `alignment_with_being` is rewritten in defined, measurable terms (`coherence`, `origin_trace`, `record`) or retired. The original stays quoted beside the rewrite. Prose uses of "Being" (manifesto ch05, LICENSE, `docs/index.md`, `testnet/README.md`) are untouched: they orient, they do not execute.
+
+| # | Where | Original (verbatim) | Proposed rewrite | Kind | Grounds |
+|---|---|---|---|---|---|
+| R1 | `constitution/autopoietic_logos.tau` clause_005 | `define "alignment_with_being" as: coherence between a stream's evolution and the essence of life, awareness, and cosmic necessity.` | **Keep as prose, mark non-executing.** Add `note: constitutional primitive (D19); not referenced by any emitted specification.` Remove `alignment_with_being` from the `provides:` lists (l.62, l.66) so no stream can `require` it. | retire from interface | D19: a primitive is oriented to, never computed. |
+| R2 | `streams/meta/ethics.tau` clause_003 | `define "alignment_with_being" as: a stream's capacity to promote emergence, reduce fragmentation, and integrate truth with trace.` | Rename the *executing* content: `define "trace_integrity" as: the degree to which a stream's clauses preserve origin_trace (every claim cites its records) and coherence (no contradiction with accepted clauses unless amended), measured per revision.` | rewrite | The definition's measurable half is exactly `preserves_origin_trace` + `does_not_contradict_prior_reasoning` (`valid_thought`); "promote emergence, reduce fragmentation" is orientation and returns to prose. |
+| R3 | `streams/meta/ethics.tau` clause_005 | `define "ethical_comparison" as: a semantic operation yielding relative value_score based on impact_scope and alignment_with_being.` | `define "ethical_comparison" as: a semantic operation yielding relative value_score based on impact_scope and trace_integrity, with the comparing seed's weight per domain (dao/weight.md) as the only magnitude.` | rewrite | D19 removes the primitive from the computation; D21 supplies the magnitude. |
+| R4 | `streams/meta/ethics.tau` clause_001 | `define "value_score" as: a computed scalar representing semantic alignment with collective well-being, lawfulness, and coherence.` | `define "value_score" as: a computed scalar over a candidate stream: coherence (sat-checked), trace_integrity, and impact_scope, each labelled with the records it rests on; never a vote count.` | rewrite | "collective well-being" is undefined; the three retained terms are gate predicates or ledger-derived. |
+| R5 | `streams/meta/ethics.tau` meta/interface `provides` | `provides: [stream_preference, value_score, impact_scope, alignment_with_being]` | `provides: [stream_preference, value_score, impact_scope, trace_integrity]` | rename | Follows R2. |
+| R6 | `streams/amendments/freedom_of_semantic_expression.tau` (v3) clause_001 | `"seeks to inform, request, align, or reflect Being" : intentional_semantic_action` | Under D20 the Family-A text is canonical; in the restored Family-A file the phrase stays as prose in the definition of `intentional_semantic_action`, and the executing predicate binds to `authored_by_agent ∧ has_identity_stream` (an emission from a declared identity). | rebind | "reflect Being" is orientation; what executes is that a declared identity emitted it. |
+
+Each rewrite becomes a candidate stream `…_v0.2.tau` only after the author signs this table; until then the originals stand and `alignment_with_being` remains a forbidden identifier for any spec the oracle sees.
+
